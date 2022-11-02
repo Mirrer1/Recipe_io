@@ -1,0 +1,19 @@
+body {
+  font-family: 'NanumSquare', sans-serif;
+}
+
+.light {
+  font-weight: 300
+}
+
+.normal {
+  font-weight: 400
+}
+
+.bold {
+  font-weight: 700
+}
+
+.bolder {
+  font-weight: 800
+}
