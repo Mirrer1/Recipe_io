@@ -2,6 +2,7 @@ import React, { useState, useCallback } from 'react';
 import { Image } from 'antd';
 import PropTypes from 'prop-types';
 
+import { backUrl } from '../../config/config';
 import { ModalImageWrapper } from '../../styles/modal';
 
 const ModalImage = ({ PostImages }) => {
@@ -18,7 +19,7 @@ const ModalImage = ({ PostImages }) => {
         }}
         width={700}
         height={460}
-        src={`http://localhost:3065/${PostImages[0]?.src}`}
+        src={`${backUrl}/${PostImages[0]?.src}`}
         onClick={showImage}
       />
       <ModalImageWrapper>
@@ -30,7 +31,7 @@ const ModalImage = ({ PostImages }) => {
         > 
           {PostImages.map((v) => {
             return (              
-              <Image key={v.id} src={`http://localhost:3065/${v?.src}`} />              
+              <Image key={v.id} src={`${backUrl}/${v?.src}`} />              
             )
           })}
         </Image.PreviewGroup>

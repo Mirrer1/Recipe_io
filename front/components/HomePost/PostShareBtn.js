@@ -2,6 +2,8 @@ import React, { useCallback } from 'react';
 import { Button, message } from 'antd';
 import PropTypes from 'prop-types';
 
+import { backUrl } from '../../config/config';
+
 const PostShareBtn = ({ postId }) => {
   const onClickShareBtn = useCallback((text) => () => {    
     if (navigator.clipboard) {      
@@ -34,7 +36,7 @@ const PostShareBtn = ({ postId }) => {
   });
 
   return (
-    <Button onClick={onClickShareBtn(`http://localhost:3060/post/${postId}`)}>공유</Button>    
+    <Button onClick={onClickShareBtn(`${backUrl}/post/${postId}`)}>공유</Button>    
   )
 };
 

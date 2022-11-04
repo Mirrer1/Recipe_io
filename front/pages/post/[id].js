@@ -9,6 +9,7 @@ import axios from 'axios';
 import { END } from 'redux-saga';
 
 import AppLayout from '../../components/AppLayout';
+import { backUrl } from '../../config/config';
 import { LOAD_MY_INFO_REQUEST } from '../../reducers/user';
 import { LOAD_POST_REQUEST } from '../../reducers/post';
 import { SinglePostResult, SinglePostIcon, SinglePostText, SinglePostBtn } from '../../styles/pageStyles';
@@ -32,7 +33,7 @@ const Post = () => {
         <meta property='og:title' content={`${singlePost?.User.nickname}님의 게시글`} />
         <meta property='og:description' content={singlePost?.desc} />        
         <meta property='og:image' content={singlePost?.Images[0]} /> 
-        <meta property='og:url' content={`http://localhost:3060/post/${id}`} />
+        <meta property='og:url' content={`${backUrl}/post/${id}`} />
       </Head>
 
       <SinglePostResult        

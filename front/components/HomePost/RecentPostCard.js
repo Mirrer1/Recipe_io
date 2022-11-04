@@ -5,6 +5,7 @@ import { HeartOutlined, CommentOutlined, EllipsisOutlined, HeartTwoTone } from '
 import PropTypes from 'prop-types';
 import Router from 'next/router';
 
+import { backUrl } from '../../config/config';
 import { 
   loadPostRequestAction, likePostRequestAction, unLikePostRequestAction, moveToCommentRequestAction, 
   visiblePostDeleteModalAction, moveToEditPostRequestAction, REPORT_MODAL_VISIBLE
@@ -64,7 +65,7 @@ const RecentPostCard = ({ post }) => {
           <RecentImageWrapper>
             <PostImage 
               alt="post image" 
-              src={`http://localhost:3065/${post.Images[0]?.src}`} 
+              src={`${backUrl}/${post.Images[0]?.src}`} 
               onClick={showPostModal} 
             />      
           </RecentImageWrapper>

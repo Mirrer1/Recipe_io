@@ -4,6 +4,7 @@ import { Button, Upload } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import PropTypes from 'prop-types';
 
+import { backUrl } from '../../config/config';
 import { IMAGES_PREVIEW, EDIT_POST_UPLOAD_IMAGES, UPLOAD_IMAGES_REQUEST, CHANGE_EDIT_POST_IMAGES } from '../../reducers/post';
 import { ImageUploaderText, ImageUploaderWrapper } from '../../styles/postingForm';
 
@@ -14,7 +15,7 @@ const PostingUpload = ({ editPost }) => {
   const onImagePreview = useCallback((e) => {
     const uploadDone = editImagePaths.concat(imagePaths).filter((v) => v === e.name);    
     if (uploadDone.length > 0) {
-      window.open(`http://localhost:3065/${uploadDone}`, '_blank');
+      window.open(`${backUrl}/${uploadDone}`, '_blank');
     } else {
       dispatch({
         type: IMAGES_PREVIEW,
@@ -61,7 +62,7 @@ const PostingUpload = ({ editPost }) => {
       uid: v.uid,
       name: v.src,
       status: 'done',      
-      thumbUrl: `http://localhost:3065/${v.src}`,
+      thumbUrl: `${backUrl}/${v.src}`,
     }
   });
 
@@ -78,7 +79,7 @@ const PostingUpload = ({ editPost }) => {
 
   useEffect(() => {
     if (previewImagePaths) {
-      window.open(`http://localhost:3065/${previewImagePaths}`, '_blank');
+      window.open(`${backUrl}/${previewImagePaths}`, '_blank');
     }
   }, [previewImagePaths]);
 

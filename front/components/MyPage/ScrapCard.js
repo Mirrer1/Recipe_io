@@ -4,6 +4,7 @@ import { Card } from 'antd';
 import { DeleteOutlined } from '@ant-design/icons';
 import PropTypes from 'prop-types';
 
+import { backUrl } from '../../config/config';
 import { loadPostRequestAction, unLikePostRequestAction } from '../../reducers/post';
 import { ScrapCardBody, ScrapCardWrapper, ScrapImage, MyPageImage } from '../../styles/myPage';
 
@@ -26,7 +27,7 @@ const ScrapCard = ({ post }) => {
           <ScrapImage>
             <MyPageImage 
               alt='scrap post image'                            
-              src={`http://localhost:3065/${post.Images[0].src}`}
+              src={`${backUrl}/${post.Images[0].src}`}
               onClick={showPostModal}
             />
           </ScrapImage>
