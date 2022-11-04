@@ -35,7 +35,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.use(cors({
-  origin: ['http://localhost:3060', 'recipeIo.com'],
+  origin: ['http://localhost:3060', 'recipeIo.com', 'http://15.164.215.230'],
   credentials: true,
 }));
 
