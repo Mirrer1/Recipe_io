@@ -2,6 +2,8 @@ const express = require('express');
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
+const multerS3 = require('multer-s3');
+const AWS = require('aws-sdk');
 
 const { Post, Comment, Image, User, Hashtag, Alert } = require('../models');
 const { isLoggedIn } = require('./middlewares');
@@ -15,22 +17,27 @@ try {
   fs.mkdirSync('uploads');
 }
 
-const upload = multer({  
-  storage: multer.diskStorage({
-    destination(req, file, done) {      
-      done(null, 'uploads');      
-    },
-    filename(req, file, done) {      
+AWS.config.update({
+  accessKeyId: process.env.S3_ACCESS_KEY_ID,
+  secretAccessKey: process.env.S3_SECRET_ACCESS_KEY,
+  region: 'ap-northeast-2',
+});
+
+const upload = multer({
+  storage: multerS3({
+    s3: new AWS.S3(),
+    bucket: 'recipe-io',
+    key(req, file, cb) {
       let ext = path.extname(file.originalname);
       if (ext === '.jfif') {
         ext = '.jpg';      
         const basename = path.basename(file.originalname, ext).split('.')[0];
-        done(null, basename + '_' + new Date().getTime() + ext);      
+        cb(null, `original/${basename}_${new Date().getTime() + ext}`);      
       } else {
         const basename = path.basename(file.originalname, ext);
-        done(null, basename + '_' + new Date().getTime() + ext);      
+        cb(null, `original/${basename}_${new Date().getTime() + ext}`);
       }      
-    },
+    }
   }),
   limits: { fileSize: 20 * 1024 * 1024 },
 });
@@ -101,7 +108,7 @@ router.post('/', isLoggedIn, async (req, res, next) => { // addPostAPI / POST /p
 
 router.post('/images', isLoggedIn, upload.array('image'), async (req, res, next) => { // uploadImagesAPI / POST /post/images
   try {    
-    res.json(req.files.map((v) => v.filename));
+    res.json(req.files.map((v) => v.location));
   } catch (error) {
     console.error(error);
     next(error);
