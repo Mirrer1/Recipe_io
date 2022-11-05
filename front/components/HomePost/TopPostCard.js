@@ -4,7 +4,6 @@ import { Card, Avatar, Row } from 'antd';
 import { HeartTwoTone, HeartOutlined, CommentOutlined } from '@ant-design/icons';
 import PropTypes from 'prop-types';
 
-import { backUrl } from '../../config/config';
 import { loadPostRequestAction } from '../../reducers/post';
 import { 
   TopPostCardBody, HomePostGlobalStyle, TopImageWrapper, PostImage, TopPostBtn, TopPostBtnText 
@@ -29,7 +28,7 @@ const TopPostCard = ({ post }) => {
           <TopImageWrapper>
             <PostImage 
               alt='top post image' 
-              src={`${backUrl}/${post.Images[0]?.src}`} 
+              src={`${post.Images[0]?.src}`} 
               onClick={showPostModal} 
             />
           </TopImageWrapper>

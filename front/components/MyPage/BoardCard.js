@@ -4,7 +4,6 @@ import { Card, Button, Popover, Row, Col } from 'antd';
 import PropTypes from 'prop-types';
 import Router from 'next/router';
 
-import { backUrl } from '../../config/config';
 import { 
   likePostRequestAction, unLikePostRequestAction, loadPostRequestAction, moveToCommentRequestAction, 
   visiblePostDeleteModalAction, moveToEditPostRequestAction,
@@ -90,7 +89,7 @@ const BoardCard = ({ post }) => {
             <CardImageWrapper>
               <ImageWrapper
                 alt="board image"                
-                src={`${backUrl}/${post.Images[0]?.src}`}
+                src={`${post.Images[0]?.src}`}
                 onClick={showPostModal}
               />
             </CardImageWrapper>
