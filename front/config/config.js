@@ -1,1 +1,1 @@
-export const backUrl = 'http://15.164.233.81';
+export const backUrl = 'http://api.recipeio.ga';

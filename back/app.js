@@ -35,7 +35,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.use(cors({
-  origin: ['http://localhost:3060', 'recipeIo.com', 'http://54.180.144.199'],
+  origin: ['http://localhost:3060', 'http://recipeio.ga'],
   credentials: true,
 }));
 
@@ -48,6 +48,11 @@ app.use(session({
   saveUninitialized: false,
   resave: false,
   secret: process.env.COOKIE_SECRET,
+  cookie: {
+    httpOnly: true,
+    secure: false,
+    domain: process.env.NODE_ENV === 'production' && '.recipeio.ga',
+  }
 }));
 app.use(passport.initialize());
 app.use(passport.session());
