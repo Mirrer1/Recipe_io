@@ -28,15 +28,7 @@ const upload = multer({
     s3: new AWS.S3(),
     bucket: 'recipe-io',
     key(req, file, cb) {
-      let ext = path.extname(file.originalname);
-      if (ext === '.jfif') {
-        ext = '.jpg';      
-        const basename = path.basename(file.originalname, ext).split('.')[0];
-        cb(null, `original/${basename}_${new Date().getTime() + ext}`);      
-      } else {
-        const basename = path.basename(file.originalname, ext);
-        cb(null, `original/${basename}_${new Date().getTime() + ext}`);
-      }      
+      cb(null, `original/${Date.now()}_${path.basename(file.originalname)}`)
     }
   }),
   limits: { fileSize: 20 * 1024 * 1024 },
