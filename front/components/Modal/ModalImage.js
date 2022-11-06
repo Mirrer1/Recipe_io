@@ -29,8 +29,8 @@ const ModalImage = ({ PostImages }) => {
           }}
         > 
           {PostImages.map((v) => {
-            return (              
-              <Image key={v.id} src={`${v?.src}`} />              
+            return (                            
+              <Image key={v.id} src={`${v?.src.replace(/\/thumb\//, '/original/')}`} alt={v?.src} />        
             )
           })}
         </Image.PreviewGroup>
