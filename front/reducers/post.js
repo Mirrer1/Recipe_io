@@ -1,7 +1,6 @@
 import produce from '../util/produce';
 
-export const initialState = {
-  previewImagePaths: null,
+export const initialState = {  
   editImagePaths: [],    
   imagePaths: [],
   topPosts: [],
@@ -96,7 +95,6 @@ export const CHANGE_EDIT_POST_IMAGES = 'CHANGE_EDIT_POST_IMAGES';
 export const UPLOAD_IMAGES_REQUEST = 'UPLOAD_IMAGES_REQUEST';
 export const UPLOAD_IMAGES_SUCCESS = 'UPLOAD_IMAGES_SUCCESS';
 export const UPLOAD_IMAGES_FAILURE = 'UPLOAD_IMAGES_FAILURE';
-export const IMAGES_PREVIEW = 'IMAGES_PREVIEW';
 
 export const ADD_POST_REQUEST = 'ADD_POST_REQUEST';
 export const ADD_POST_SUCCESS = 'ADD_POST_SUCCESS';
@@ -325,11 +323,6 @@ const reducer = (state = initialState, action) => {
       case UPLOAD_IMAGES_FAILURE:
         draft.uploadImagesLoading = false;
         draft.uploadImagesError = action.error;
-        break;
-      case IMAGES_PREVIEW:
-        const combinePaths = draft?.editImagePaths.concat(draft.imagePaths);
-        const result = combinePaths.filter((v) => v.split('.')[0].split('_')[0] === action.data.split('.')[0].split('_')[0]);
-        result.length > 1 ? draft.previewImagePaths = result[0] : draft.previewImagePaths = result;        
         break;
       case ADD_POST_REQUEST:
         draft.addPostLoading = true;

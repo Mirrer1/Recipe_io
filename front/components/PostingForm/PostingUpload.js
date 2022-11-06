@@ -1,28 +1,15 @@
 import React, { useCallback, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Button, Upload } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import PropTypes from 'prop-types';
 
-import { IMAGES_PREVIEW, EDIT_POST_UPLOAD_IMAGES, UPLOAD_IMAGES_REQUEST, CHANGE_EDIT_POST_IMAGES } from '../../reducers/post';
+import { EDIT_POST_UPLOAD_IMAGES, UPLOAD_IMAGES_REQUEST, CHANGE_EDIT_POST_IMAGES } from '../../reducers/post';
 import { ImageUploaderText, ImageUploaderWrapper } from '../../styles/postingForm';
 
 const PostingUpload = ({ editPost }) => { 
-  const dispatch = useDispatch(); 
-  const { editImagePaths, imagePaths, previewImagePaths } = useSelector((state) => state.post);
-
-  const onImagePreview = useCallback((e) => {
-    const uploadDone = editImagePaths.concat(imagePaths).filter((v) => v === e.name);    
-    if (uploadDone.length > 0) {
-      window.open(`${uploadDone}`, '_blank');
-    } else {
-      dispatch({
-        type: IMAGES_PREVIEW,
-        data: e.name,
-      });
-    };    
-  }, []);
-
+  const dispatch = useDispatch();  
+  
   const normFile = useCallback((e) => {
     if (Array.isArray(e)) {
       return e;
@@ -76,12 +63,6 @@ const PostingUpload = ({ editPost }) => {
     }
   }, []);
 
-  useEffect(() => {
-    if (previewImagePaths) {
-      window.open(`${previewImagePaths}`, '_blank');
-    }
-  }, [previewImagePaths]);
-
   return (
     <ImageUploaderWrapper
       name="images"
@@ -99,8 +80,7 @@ const PostingUpload = ({ editPost }) => {
         name="image"         
         listType="picture"
         onChange={onChangeImages}
-        beforeUpload={onBeforeUpload}                        
-        onPreview={onImagePreview}
+        beforeUpload={onBeforeUpload}                                
       >            
         <ImageUploaderText className='bold'>
           {editPost ? 'Drag edit files here or' : 'Drag files here OR'}
