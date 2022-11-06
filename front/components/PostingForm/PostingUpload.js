@@ -9,6 +9,10 @@ import { ImageUploaderText, ImageUploaderWrapper } from '../../styles/postingFor
 
 const PostingUpload = ({ editPost }) => { 
   const dispatch = useDispatch();  
+
+  const onClickPreview = useCallback((e) => {
+    e.preventDefault();
+  }, []);
   
   const normFile = useCallback((e) => {
     if (Array.isArray(e)) {
@@ -80,7 +84,8 @@ const PostingUpload = ({ editPost }) => {
         name="image"         
         listType="picture"
         onChange={onChangeImages}
-        beforeUpload={onBeforeUpload}                                
+        beforeUpload={onBeforeUpload}          
+        onPreview={onClickPreview}                      
       >            
         <ImageUploaderText className='bold'>
           {editPost ? 'Drag edit files here or' : 'Drag files here OR'}
