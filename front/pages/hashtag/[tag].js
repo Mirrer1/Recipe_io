@@ -45,11 +45,11 @@ const User = () => {
         <title>
           #{tag} 게시글 검색결과
         </title>
-        <meta name='description' content={recentPosts[0]?.desc}/>
-        <meta property='og:title' content={`${recentPosts[0]?.User.nickname}님의 게시글`} />
-        <meta property='og:description' content={recentPosts[0]?.desc} />        
+        <meta name='description' content={`#${tag} 검색어로 게시글을 검색한 결과`}/>
+        <meta property='og:title' content={`#${tag} 게시글 검색결과`} />
+        <meta property='og:description' content={`#${tag} 검색어로 게시글을 검색한 결과`} />        
         <meta property='og:image' content={recentPosts[0]?.Images[0]} /> 
-        {/* <meta property='og:url' content={`https://nodebird.com/post/${id}`} /> -> 추후에 주소정하면 수정 */}
+        <meta property='og:url' content={`http://recipeio.ga/hashtag/${tag}`} />
       </Head>
       
       <MypageWrapper>

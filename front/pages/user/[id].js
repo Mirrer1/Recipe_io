@@ -44,13 +44,13 @@ const User = () => {
     <AppLayout>
       <Head>
         <title>
-          {userInfo?.nickname}님의 글
+          {userInfo?.nickname}님의 작성 게시글
         </title>
-        <meta name='description' content={recentPosts[0]?.desc}/>
-        <meta property='og:title' content={`${recentPosts[0]?.User.nickname}님의 게시글`} />
-        <meta property='og:description' content={recentPosts[0]?.desc} />        
+        <meta name='description' content={`${userInfo?.nickname}님이 작성한 게시글 검색결과`}/>
+        <meta property='og:title' content={`${userInfo?.nickname}님의 작성 게시글`} />
+        <meta property='og:description' content={`${userInfo?.nickname}님이 작성한 게시글 검색결과`} />        
         <meta property='og:image' content={recentPosts[0]?.Images[0]} />
-        {/* <meta property='og:url' content={`https://nodebird.com/post/${id}`} /> -> 추후에 주소정하면 수정 */}
+        <meta property='og:url' content={`http://recipeio.ga/user/${id}`} />
       </Head>
 
       <MypageWrapper>
