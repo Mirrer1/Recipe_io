@@ -16,12 +16,7 @@ const PostModal = () => {
 
   useEffect(() => {    
     singlePost && dispatch(visiblePostModalAction());        
-  }, [singlePost?.id]);  
-
-  const postModalOkBtn = useCallback(() => {        
-    dispatch(invisiblePostModalAction());    
-    moveToComment && dispatch(returnFromCommentRequestAction());
-  }, []);
+  }, [singlePost?.id]);    
 
   const postModalCancelBtn = useCallback(() => {        
     dispatch(invisiblePostModalAction());    
@@ -33,11 +28,9 @@ const PostModal = () => {
       <ModalContentGlobalStyle />
       <Modal            
         centered
-        visible={postModalVisible}          
-        okText='확인'
-        cancelText='닫기'
-        onOk={postModalOkBtn}
+        visible={postModalVisible}
         onCancel={postModalCancelBtn}
+        footer={null}      
         width={1000}
       >
         <ModalWrapper>              
