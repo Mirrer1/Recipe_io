@@ -30,8 +30,7 @@ const Post = () => {
         </title>
         <meta name='description' content={singlePost?.desc}/>
         <meta property='og:title' content={`${singlePost?.User.nickname}님의 게시글`} />
-        <meta property='og:description' content={singlePost?.desc} />        
-        <meta property='og:image' content={`http://recipeio.ga/favicon.ico`} /> 
+        <meta property='og:description' content={singlePost?.desc} />                
         <meta property='og:url' content={`http://recipeio.ga/post/${id}`} />
       </Head>
 
