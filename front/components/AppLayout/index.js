@@ -10,7 +10,6 @@ import PostDeleteModal from '../Modal/PostDeleteModal';
 import CommentDeleteModal from '../Modal/CommentDeleteModal';
 import ContactEmailForm from '../Modal/ContactEmailForm';
 import ReportModal from '../Modal/ReportModal';
-import UploadModal from '../Modal/UploadModal';
 import { MenuDivider, UpBtn, UpBtnIcon } from '../../styles/appLayout';
 import { RESET_LOGIN_STATE, RESET_LOGOUT_STATE } from '../../reducers/user';
 import { RESET_REMOVE_POST_STATE, RESET_LIKE_STATE, RESET_UNLIKE_STATE, RESET_ADD_COMMENT_STATE, RESET_REMOVE_COMMENT_STATE } from '../../reducers/post';
@@ -18,9 +17,8 @@ import { RESET_REMOVE_POST_STATE, RESET_LIKE_STATE, RESET_UNLIKE_STATE, RESET_AD
 const AppLayout = ({ children }) => {  
   const { me, logInDone, logInError, logOutDone, contactFormVisible } = useSelector((state) => state.user);
   const { 
-    singlePost, postDeleteModalVisible, commentDeleteModalVisible, removePostDone, likePostDone, 
-    likePostError, unLikePostDone, unLikePostError, addCommentDone, addCommentError, removeCommentDone,
-    reportModalVisible, uploadImagesLoading, 
+    singlePost, postDeleteModalVisible, commentDeleteModalVisible, removePostDone, likePostDone, likePostError, 
+    unLikePostDone, unLikePostError, addCommentDone, addCommentError, removeCommentDone, reportModalVisible,  
   } = useSelector((state) => state.post);
   const [showBtn, setShowBtn] = useState(false);
   const topPageRef = useRef();    
@@ -122,8 +120,7 @@ const AppLayout = ({ children }) => {
       {postDeleteModalVisible && <PostDeleteModal />}
       {commentDeleteModalVisible && <CommentDeleteModal />}
       {contactFormVisible && <ContactEmailForm />}
-      {reportModalVisible && <ReportModal />}
-      {uploadImagesLoading && <UploadModal />}
+      {reportModalVisible && <ReportModal />}      
     </>
   )
 };

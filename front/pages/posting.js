@@ -6,13 +6,14 @@ import Router from 'next/router';
 
 import AppLayout from '../components/AppLayout/';
 import MainPosting from '../components/PostingForm/MainPosting';
+import UploadModal from '../components/Modal/UploadModal';
 import { LOAD_MY_INFO_REQUEST } from '../reducers/user';
 import { PostingText, PageMainText, PageSubText, LogoutResult } from '../styles/pageStyles';
 
 const Posting = () => {        
   const dispatch = useDispatch();
   const { me } = useSelector((state) => state.user);
-  const { uploadImagesDone, uploadImagesError, addPostDone, editPostDone } = useSelector((state) => state.post);  
+  const { uploadImagesDone, uploadImagesError, addPostDone, editPostDone, uploadImagesLoading } = useSelector((state) => state.post);  
 
   useEffect(() => {    
     dispatch({
@@ -56,6 +57,7 @@ const Posting = () => {
           <PageSubText>Sharing your recipes leads to the joyous happiness of others</PageSubText>
         </PostingText>        
         {me ? <MainPosting /> : <LogoutResult title="로그인이 필요한 서비스입니다." extra={<div>로그인 후 이용해주세요.</div>}/>}
+        {uploadImagesLoading && <UploadModal />}        
       </AppLayout>
     </>
   )
