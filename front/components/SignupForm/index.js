@@ -15,8 +15,7 @@ const SignupForm = () => {
   const [ authInputVisible, setAuthInputVisible ] = useState(false);
   const [ authCodeInput, setAuthCodeInput ] = useState('');
   const [ checkedAuth, setCheckedAuth ] = useState(false);
-  const { sendAuthMailDone, sendAuthMailError, authCode, signUpLoading } = useSelector((state => state.user));  
-  const { sendAuthMailLoading } = useSelector((state) => state.post);
+  const { sendAuthMailLoading, sendAuthMailDone, sendAuthMailError, authCode, signUpLoading } = useSelector((state => state.user));    
   
   const onSubmitForm = useCallback((value) => {
     if (checkedAuth) {
