@@ -7,7 +7,7 @@ import { BtnWrapper, ModalIcon, ModalMainText, ModalSubText } from '../../styles
 
 const CommentDeleteModal = () => {
   const dispatch = useDispatch();
-  const { deleteComment, deleteCliked, commentDeleteModalVisible } = useSelector((state) => state.post);
+  const { deleteComment, deleteCliked, commentDeleteModalVisible, removeCommentLoading } = useSelector((state) => state.post);
   
   const commentDeleteModalOkBtn = useCallback(() => {   
     dispatch(clickedDeleteButtonAction());        
@@ -34,7 +34,8 @@ const CommentDeleteModal = () => {
         centered
         visible={commentDeleteModalVisible}
         onOk={commentDeleteModalOkBtn}
-        onCancel={commentDeleteModalCancelBtn}              
+        onCancel={commentDeleteModalCancelBtn}  
+        confirmLoading={removeCommentLoading}            
       >
         <BtnWrapper>
           <ModalIcon />    

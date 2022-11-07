@@ -7,7 +7,7 @@ import { BtnWrapper, ModalIcon, ModalMainText, ModalSubText } from '../../styles
 
 const PostDeleteModal = () => {  
   const dispatch = useDispatch();
-  const { deletePost, deleteCliked, postDeleteModalVisible } = useSelector((state) => state.post);
+  const { deletePost, deleteCliked, postDeleteModalVisible, removePostLoading } = useSelector((state) => state.post);
   
   const postDeleteModalOkBtn = useCallback(() => {   
     dispatch(clickedDeleteButtonAction());        
@@ -28,6 +28,7 @@ const PostDeleteModal = () => {
         visible={postDeleteModalVisible}        
         onOk={postDeleteModalOkBtn}
         onCancel={postDeleteModalCancelBtn}
+        confirmLoading={removePostLoading}
         > 
           <BtnWrapper>
             <ModalIcon />    

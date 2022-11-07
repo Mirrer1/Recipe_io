@@ -16,6 +16,7 @@ const SignupForm = () => {
   const [ authCodeInput, setAuthCodeInput ] = useState('');
   const [ checkedAuth, setCheckedAuth ] = useState(false);
   const { sendAuthMailDone, sendAuthMailError, authCode, signUpLoading } = useSelector((state => state.user));  
+  const { sendAuthMailLoading } = useSelector((state) => state.post);
   
   const onSubmitForm = useCallback((value) => {
     if (checkedAuth) {
@@ -133,11 +134,11 @@ const SignupForm = () => {
                 authInputVisible
                 ? ( 
                     <div>
-                      {checkedAuth || <AuthResendBtn type='primary' onClick={onClickAuthBtn}>재발송</AuthResendBtn>}
+                      {checkedAuth || <AuthResendBtn type='primary' loading={sendAuthMailLoading} onClick={onClickAuthBtn}>재발송</AuthResendBtn>}
                       <AuthOkBtn type='primary' onClick={checkedAuthCode}>확인</AuthOkBtn>
                     </div>
                   )
-                : <AuthEmailBtn type='primary' onClick={onClickAuthBtn}>인증메일 발송</AuthEmailBtn>
+                : <AuthEmailBtn type='primary' loading={sendAuthMailLoading} onClick={onClickAuthBtn}>인증메일 발송</AuthEmailBtn>
               }
               
             </Col>
