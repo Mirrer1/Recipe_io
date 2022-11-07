@@ -1,5 +1,5 @@
 import { Divider, List, Button, Row, Tag, Card, Form } from 'antd';
-import { HeartOutlined, CommentOutlined, HeartTwoTone, ContainerOutlined, SoundOutlined } from '@ant-design/icons';
+import { HeartOutlined, CommentOutlined, HeartTwoTone, ContainerOutlined, SoundOutlined, LoadingOutlined } from '@ant-design/icons';
 import styled, { createGlobalStyle } from 'styled-components';
 
 // Modal Global Style
@@ -246,5 +246,13 @@ export const ReportFormIcon = styled(SoundOutlined)`
   && {
     font-size: 2rem;
     margin-right: 0.3em;
+  }
+`;
+
+// UploadModal Style
+export const UploadModalIcon = styled(LoadingOutlined)`
+  && {    
+    font-size: 1.5rem;
+    margin-right: 0.5em;
   }
 `;

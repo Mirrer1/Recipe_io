@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { message, Modal } from 'antd';
+import { Modal } from 'antd';
 
 import { clickedDeleteButtonAction, invisiblePostDeleteModalAction, removePostRequestAction } from '../../reducers/post';
 import { BtnWrapper, ModalIcon, ModalMainText, ModalSubText } from '../../styles/homePost';
@@ -24,6 +24,7 @@ const PostDeleteModal = () => {
   return (
     <>
       <Modal
+        centered
         visible={postDeleteModalVisible}        
         onOk={postDeleteModalOkBtn}
         onCancel={postDeleteModalCancelBtn}

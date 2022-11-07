@@ -12,13 +12,18 @@ import { PostingText, PageMainText, PageSubText, LogoutResult } from '../styles/
 const Posting = () => {        
   const dispatch = useDispatch();
   const { me } = useSelector((state) => state.user);
-  const { addPostDone, editPostDone } = useSelector((state) => state.post);  
+  const { uploadImagesDone, uploadImagesError, addPostDone, editPostDone } = useSelector((state) => state.post);  
 
   useEffect(() => {    
     dispatch({
       type: LOAD_MY_INFO_REQUEST,
     });    
   }, []);
+
+  useEffect(() => {
+    uploadImagesDone && message.success('이미지 작업이 완료되었습니다.', 1.5);
+    uploadImagesError && message.warning('이미지 작업 중 에러가 발생했습니다.', 1.5);    
+  }, [uploadImagesDone, uploadImagesError]);
 
   useEffect(() => {
     if (addPostDone) {

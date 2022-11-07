@@ -31,6 +31,7 @@ const CommentDeleteModal = () => {
   return (
     <>
       <Modal
+        centered
         visible={commentDeleteModalVisible}
         onOk={commentDeleteModalOkBtn}
         onCancel={commentDeleteModalCancelBtn}              

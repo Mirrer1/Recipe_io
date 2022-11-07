@@ -32,7 +32,7 @@ const PostModal = () => {
     <article>
       <ModalContentGlobalStyle />
       <Modal            
-        centered          
+        centered
         visible={postModalVisible}          
         okText='확인'
         cancelText='닫기'
