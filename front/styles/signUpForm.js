@@ -15,7 +15,7 @@ export const SignUpReturnBtn = styled(Button)`
 
 export const AuthResendBtn = styled(Button)`
   && {
-    width: 70px;
+    width: 90px;
     margin-right: 0.5em;
   }
 `
@@ -28,6 +28,6 @@ export const AuthOkBtn = styled(Button)`
 
 export const AuthEmailBtn = styled(Button)`
   && {
-    width: 110px;
+    width: 130px;
   }
 `
