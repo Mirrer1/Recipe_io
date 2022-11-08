@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
-import { Button, message } from 'antd';
+import { message } from 'antd';
+import { ShareAltOutlined } from '@ant-design/icons'
 import PropTypes from 'prop-types';
 
 const PostShareBtn = ({ postId }) => {
@@ -33,8 +34,8 @@ const PostShareBtn = ({ postId }) => {
     }
   });
 
-  return (
-    <Button onClick={onClickShareBtn(`http://recipeio.ga/post/${postId}`)}>공유</Button>    
+  return (    
+    <ShareAltOutlined key="share" onClick={onClickShareBtn(`http://recipeio.ga/post/${postId}`)} />
   )
 };
 

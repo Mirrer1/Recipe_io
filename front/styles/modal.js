@@ -252,6 +252,7 @@ export const ReportFormIcon = styled(SoundOutlined)`
 // UploadModal Style
 export const UploadModalIcon = styled(LoadingOutlined)`
   && {    
+    color: #1890FF;
     font-size: 1.5rem;
     margin-right: 0.5em;
   }

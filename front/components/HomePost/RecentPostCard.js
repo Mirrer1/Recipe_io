@@ -76,6 +76,7 @@ const RecentPostCard = ({ post }) => {
             ? <HeartTwoTone twoToneColor="#eb2f96" key="like" onClick={unLikePost} />
             : <HeartOutlined key="like" onClick={onLikePost} />,
             <CommentOutlined key="comment" onClick={recentPostCommentBtn} />,
+            <PostShareBtn postId={post.id}/>,
             
             <Popover 
               key='more' 
@@ -91,8 +92,7 @@ const RecentPostCard = ({ post }) => {
                     </>
                   )
                   : (
-                    <>
-                      <PostShareBtn postId={post.id}/>
+                    <>                      
                       <Button danger onClick={onClickPostReportBtn} >신고</Button>
                     </>
                   )
