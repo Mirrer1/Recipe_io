@@ -23,6 +23,19 @@ const AppLayout = ({ children }) => {
   const [showBtn, setShowBtn] = useState(false);
   const topPageRef = useRef();    
 
+  useEffect(() => {
+    const user = navigator.userAgent;
+    
+    if ( user.indexOf("iPhone") > -1 || user.indexOf("Android") > -1 ) {
+      message.warning(
+      <code>
+        해당 사이트는 PC 화면에 최적화돼있습니다.
+        <br />
+        모바일이 아닌 PC로 접속하시는 것을 권장해 드립니다.
+      </code>, 3);
+    }
+  }, []);
+
   const dispatch = useDispatch();
   useEffect(() => {
     logInDone && message.success('반갑습니다. 맛있는 식사 하세요.', 1.5);
