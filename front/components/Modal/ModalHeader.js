@@ -52,12 +52,12 @@ const ModalHeader = ({ post }) => {
       <HeaderWrapper>        
         <HeaderInfo>          
           <Avatar>
-            <Link href={`user/${post.User.id}`}>
+            <Link href={`user/${post.User.id}`} prefetch={false}>
               <UserAvatarLink>{post.User.nickname[0]}</UserAvatarLink>
             </Link>
           </Avatar>                    
           <HeaderNicknameWrapper>
-            <Link href={`user/${post.User.id}`}>
+            <Link href={`user/${post.User.id}`} prefetch={false}>
               <HeaderNickname className='bold'>{post.User.nickname}</HeaderNickname>
             </Link>
           </HeaderNicknameWrapper>                                

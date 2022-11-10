@@ -14,8 +14,8 @@ const LogoutMenu = () => {
   return (
     <nav>
       <LoggedoutMenu mode='horizontal' className='bold'>        
-        <Menu.Item key='loginHome' icon={<HomeIcon />} ><Link href="/"><a>Home</a></Link></Menu.Item>                   
-        <Menu.Item key='loginMypage' icon={<UserIcon />} disabled ><Link href="/mypage"><a>My Page</a></Link></Menu.Item>                  
+        <Menu.Item key='loginHome' icon={<HomeIcon />} ><Link href="/" prefetch={false}><a>Home</a></Link></Menu.Item>                   
+        <Menu.Item key='loginMypage' icon={<UserIcon />} disabled ><Link href="/mypage" prefetch={false}><a>My Page</a></Link></Menu.Item>                  
         <Menu.Item key='loginNews' icon={<NewsIcon />} disabled >새소식</Menu.Item>
         <Menu.Item key='login' icon={<LoginIcon /> } onClick={onToggleLogin} >Login</Menu.Item>                              
       </LoggedoutMenu>              

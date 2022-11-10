@@ -43,8 +43,8 @@ const CommentList = ({ Comments, postId }) => {
             }
           >
             <List.Item.Meta             
-              avatar={<Avatar><Link href={`user/${item.User.id}`}><UserAvatarLink>{item.User.nickname[0]}</UserAvatarLink></Link></Avatar>}
-              title={<Link href={`user/${item.User.id}`}><CommentNickname className='bold'>{item.User.nickname}</CommentNickname></Link>}
+              avatar={<Avatar><Link href={`user/${item.User.id}`} prefetch={false}><UserAvatarLink>{item.User.nickname[0]}</UserAvatarLink></Link></Avatar>}
+              title={<Link href={`user/${item.User.id}`} prefetch={false}><CommentNickname className='bold'>{item.User.nickname}</CommentNickname></Link>}
               description={
                 (editComment === item.id) 
                 ? <EditCommentForm postId={postId} commentId={item.id}/>
