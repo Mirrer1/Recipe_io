@@ -48,7 +48,7 @@ const User = () => {
         <meta name='description' content={`#${tag} 검색어로 게시글을 검색한 결과`}/>
         <meta property='og:title' content={`#${tag} 게시글 검색결과`} />
         <meta property='og:description' content={`#${tag} 검색어로 게시글을 검색한 결과`} />                
-        <meta property="og:image" content={recentPosts[0]?.Images[0].src } />       
+        <meta property="og:image" content={'https://recipeio.ga/favicon.ico'} />
         <meta property='og:url' content={`http://recipeio.ga/hashtag/${tag}`} />
       </Head>
       
