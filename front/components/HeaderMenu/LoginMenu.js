@@ -68,8 +68,8 @@ const LoginMenu = () => {
       <MenuRowWrapper align='middle' justify='space-between' wrap={false}>
         <MenuColWrapper>
           <LoggedinMenu mode='horizontal' className='bold' onOpenChange={onHoverAlertMenu}>
-            <Menu.Item key='loginHome' icon={<HomeIcon />} ><Link href="/" prefetch={false}><a>Home</a></Link></Menu.Item>  
-            <Menu.Item key='loginMypage' icon={<UserIcon />} ><Link href="/profile" prefetch={false}><a>My Page</a></Link></Menu.Item>                                
+            <Menu.Item key='loginHome' icon={<HomeIcon />} ><Link href="/"><a>Home</a></Link></Menu.Item>  
+            <Menu.Item key='loginMypage' icon={<UserIcon />} ><Link href="/profile"><a>My Page</a></Link></Menu.Item>                                
             <Menu.SubMenu key='loginNews' title='새소식' icon={userAlert?.length === 0 ? <NewsIcon /> : <Badge dot><NewsIcon /></Badge>} >               
               {
                 userAlert?.length !== 0
@@ -102,13 +102,13 @@ const LoginMenu = () => {
           <UserInfo>
             <AvatarWrapper>
               <UserAvatar>
-                <Link href={`/user/${me.id}`} prefetch={false}><UserAvatarLink>{me.nickname[0]}</UserAvatarLink></Link>
+                <Link href={`/user/${me.id}`}><UserAvatarLink>{me.nickname[0]}</UserAvatarLink></Link>
               </UserAvatar>
             </AvatarWrapper>
 
             <div>              
-              <UserNickname><Link href="/profile" prefetch={false}><UserNicknameLink className='bold'>{me.nickname}</UserNicknameLink></Link></UserNickname>
-              <UserEmail><Link href="/profile" prefetch={false}><UserEmailLink>{me.email}</UserEmailLink></Link></UserEmail>
+              <UserNickname><Link href="/profile"><UserNicknameLink className='bold'>{me.nickname}</UserNicknameLink></Link></UserNickname>
+              <UserEmail><Link href="/profile"><UserEmailLink>{me.email}</UserEmailLink></Link></UserEmail>
             </div>
           </UserInfo>       
         </Col>        

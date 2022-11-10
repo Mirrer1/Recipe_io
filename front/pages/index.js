@@ -64,7 +64,7 @@ const Home = () => {
             <PageMainText className='bolder'>Recipe.io</PageMainText>
             <PageSubText>Have a delicious meal today</PageSubText>
           </HomeLogoText>
-          {me && <Link href='/posting' prefetch={false}><a><Button type='primary' size='large' icon={<PlusCircleOutlined />} >Create Recipe</Button></a></Link>}
+          {me && <Link href='/posting'><a><Button type='primary' size='large' icon={<PlusCircleOutlined />} >Create Recipe</Button></a></Link>}
         </HomeLogoHeader>
         
         <HomeInputWrapper 

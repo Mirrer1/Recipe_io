@@ -10,7 +10,7 @@ const ModalTag = ({ tags }) => (
       if (v.match(/(#[^\s#]+)/)) {
         return (
           <span key={i}>
-            <Link href={`/hashtag/${v.slice(1)}`} prefetch={false}><a><TagWrapper color="#2db7f5">{v}</TagWrapper></a></Link>
+            <Link href={`/hashtag/${v.slice(1)}`}><a><TagWrapper color="#2db7f5">{v}</TagWrapper></a></Link>
           </span>
         )
       }

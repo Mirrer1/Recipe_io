@@ -51,7 +51,7 @@ const LoginForm = () => {
       
       <Row align='end'>
         <LoginBtn type='primary' htmlType='submit' loading={logInLoading}>로그인</LoginBtn>
-        <Link href='/signup' prefetch={false}><a><Button type='primary'>회원가입</Button></a></Link>
+        <Link href='/signup'><a><Button type='primary'>회원가입</Button></a></Link>
       </Row>
     </FormWrapper>    
   )
