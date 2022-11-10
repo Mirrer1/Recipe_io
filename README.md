@@ -46,7 +46,7 @@
 
 <br />
 
-## Representative Features
+## Representative Function
 
 ### Login, Signup
 
