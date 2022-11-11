@@ -87,7 +87,7 @@ Made by [**@Mirrer**](https://www.instagram.com/mirrerlike_/)
 
 본 서비스의 **버그** 및 **개선사항**에 대해서는 아래 메일로 전달해주시면 감사하겠습니다.
 
-> alsejr1004@gmail.com
+> [**alsejr1004@gmail.com**](mailto:alsejr1004@gmail.com)
 
 
 <br />
