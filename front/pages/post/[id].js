@@ -25,9 +25,7 @@ const Post = () => {
   return (
     <AppLayout>
       <Head>
-        <title>
-          {singlePost?.title} 게시글
-        </title>
+        <title>{singlePost?.title} 게시글</title>
         <meta name='description' content={singlePost?.desc}/>
         <meta property='og:title' content={`${singlePost?.User.nickname}님의 게시글`} />
         <meta property='og:description' content={singlePost?.desc} />      
