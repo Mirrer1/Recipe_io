@@ -1,17 +1,17 @@
 # Project Title
 
-- [**Recipe_io**](https://recipeio.ga/)
+* **Recipe_io**
 
 
 <br />
 
 ## Description
 
-- 코로나 19로 배달 및 장보기, 요리 등 **`홈메이드 쿡`** 현상이 일상 소비 습관에 정착했습니다.
+* 코로나 19로 배달 및 장보기, 요리 등 **`홈메이드 쿡`** 현상이 일상 소비 습관에 정착했습니다.
 
-- **`Recipe_io`** 는 이러한 상황에 조금 더 **`간편`** 하고 **`다양한`** 요리 레시피에 접근할 수 있는 **`레시피 공유 SNS`** 서비스입니다.
+* **`Recipe_io`** 는 이러한 상황에 조금 더 **`간편`** 하고 **`다양한`** 요리 레시피에 접근할 수 있는 **`레시피 공유 SNS`** 서비스입니다.
 
-- 본 서비스는 **`PC 화면`** 에 최적화돼있습니다.
+* 본 서비스는 **`PC 화면`** 에 최적화돼있습니다.
 
 <br />
 
@@ -67,6 +67,24 @@
 
 <br />
 
+
+## Getting Started
+
+### Dependencies
+
+* **`Internet Explorer`** 를 포함한 **모든 운영체제**에서 동작
+
+* 단, 게시글 공유는 **`IE`**, **`Chrome 66`** 이하 버전에서는 불가능
+
+### Executing program
+
+* 아래 URL을 통해 접근
+
+> [**https://recipeio.ga/**](https://recipeio.ga/)
+
+
+<br />
+
 ## Version History
 
 * 0.1
@@ -78,14 +96,14 @@
 
 ## Authors
 
-Made by [**@Mirrer**](https://www.instagram.com/mirrerlike_/)
+* Made by [**@Mirrer**](https://www.instagram.com/mirrerlike_/)
 
 
 <br />
 
 ## Convey your Opinion
 
-본 서비스의 **버그** 및 **개선사항**에 대해서는 아래 메일로 전달해주시면 감사하겠습니다.
+* 본 서비스의 **버그** 및 **개선사항**에 대해서는 아래 메일로 전달해주시면 감사하겠습니다.
 
 > [**alsejr1004@gmail.com**](mailto:alsejr1004@gmail.com)
 
