@@ -22,14 +22,15 @@
    <img src="https://img.shields.io/badge/HTML-bcbcbc?style=flat-square&logo=HTML5&logoColor=white"/>
    <img src="https://img.shields.io/badge/CSS-bcbcbc?style=flat-square&logo=CSS3&logoColor=white"/>
    <img src="https://img.shields.io/badge/JAVASCRIPT-bcbcbc?style=flat-square&logo=JavaScript&logoColor=white"/>
+   <img src="https://img.shields.io/badge/ANT DESIGN-bcbcbc?style=flat-square&logo=Ant Design&logoColor=white"/>
+   <img src="https://img.shields.io/badge/STYLED COMPONENTS-bcbcbc?style=flat-square&logo=styled-components&logoColor=white"/>
 </div>
 
 <div style={{display: 'flex'}}>
    <img src="https://img.shields.io/badge/REACT-bcbcbc?style=flat-square&logo=React&logoColor=white"/>
    <img src="https://img.shields.io/badge/REDUX-bcbcbc?style=flat-square&logo=Redux&logoColor=white"/>
    <img src="https://img.shields.io/badge/REDUX SAGA-bcbcbc?style=flat-square&logo=Redux-Saga&logoColor=white"/>
-   <img src="https://img.shields.io/badge/ANT DESIGN-bcbcbc?style=flat-square&logo=Ant Design&logoColor=white"/>
-   <img src="https://img.shields.io/badge/STYLED COMPONENTS-bcbcbc?style=flat-square&logo=styled-components&logoColor=white"/>
+   <img src="https://img.shields.io/badge/NEXT.JS-bcbcbc?style=flat-square&logo=Next.js&logoColor=white"/>   
 </div>
 
 <div style={{display: 'flex'}}>
