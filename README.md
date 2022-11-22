@@ -41,6 +41,8 @@
 </div>
 
 <div style={{display: 'flex'}}>
+   <img src="https://img.shields.io/badge/GIT-bcbcbc?style=flat-square&logo=Git&logoColor=white"/>
+   <img src="https://img.shields.io/badge/GITHUB-bcbcbc?style=flat-square&logo=GitHub&logoColor=white"/>
    <img src="https://img.shields.io/badge/AWS-bcbcbc?style=flat-square&logo=Amazon AWS&logoColor=white"/>
    <img src="https://img.shields.io/badge/LAMBDA-bcbcbc?style=flat-square&logo=AWS Lambda&logoColor=white"/>
 </div>
