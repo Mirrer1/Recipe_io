@@ -97,7 +97,7 @@
 <br />
 
 
-## Authors
+## Author
 
 * Made by [**@Mirrer**](https://www.instagram.com/mirrerlike_/)
 
