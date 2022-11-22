@@ -16,7 +16,7 @@
 <br />
 
 
-## Used Skill
+## Used Skills
 
 <div style={{display: 'flex'}}>
    <img src="https://img.shields.io/badge/HTML-bcbcbc?style=flat-square&logo=HTML5&logoColor=white"/>
