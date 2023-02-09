@@ -1,6 +1,7 @@
+
 # Project Title
 
-* **Recipe_io**
+* [**Recipe_io**](https://recipeio.ga/)
 
 
 <br />
@@ -53,13 +54,13 @@
 
 ## Representative Feature
 
-### Login, Signup
+### Post writing, editing
 
-* **`Passport`**, **`Nodemailer`** 를 통한 간편한 **`로그인`**, **`회원가입`** 기능
+* 직관적이고 간편한 **`게시글 작성`**, **`수정`**
 
 ### Dashboard
 
-* **`Dashboard`** 페이지를 사용하여 유저의 **`좋아요`**, **`작성 게시글`**...등을 간편하게 확인할 수 있도록 UI를 구성
+* **`Dashboard`** 페이지를 통한 사용자의 **`스크랩`** , **`작성 게시글`** 조회
 
 ### User Alert
 
@@ -67,7 +68,7 @@
 
 ### Image Resizing
 
-* **`AWS Lambda`** 함수의 **`Image Resizing`** 작업을 통해 이미지를 효율적으로 관리
+* **`AWS Lambda`** 함수의 **`Image Resizing`** 을 사용하여 이미지를 효율적으로 관리
 
 
 <br />
@@ -91,6 +92,72 @@
 
 > [**https://recipeio.ga/**](https://recipeio.ga/)
 
+
+<br />
+
+
+### Installing
+
+#### Backend Settings
+
+* 프로젝트의 **`Back`** 폴더로 이동하여 관련 **`Package Install`**
+
+```bash
+cd back
+```
+
+```bash
+npm i
+```
+
+* **`Database`** 생성, **`Server`** 실행
+
+```bash
+npx sequelize db:create
+```
+
+```bash
+npm run dev
+```
+
+<br>
+
+
+#### Frontend Settings
+
+* 프로젝트의 **`Front`** 폴더로 이동하여 관련 **`Package Install`**
+
+```bash
+cd front
+```
+
+```bash
+npm i
+```
+
+<br>
+
+
+#### Project Start
+
+* 설치를 완료한 뒤 **각각의 `Terminal`** 에서 **`Server`, `Front` 실행**
+
+```bash
+cd back
+```
+
+```bash
+npm run dev
+```
+
+```bash
+// another terminal
+cd front
+```
+
+```bash
+npm run dev
+```
 
 <br />
 
