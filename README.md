@@ -58,21 +58,29 @@
 
 * 직관적이고 간편한 **`게시글 작성`**, **`수정`**
 
+https://user-images.githubusercontent.com/87924110/217843061-256ebc09-f784-49bb-88b2-50c5932bf4d5.mp4
+
+
 ### Dashboard
 
 * **`Dashboard`** 페이지를 통한 사용자의 **`스크랩`** , **`작성 게시글`** 조회
+
+https://user-images.githubusercontent.com/87924110/217843167-4dcda5d5-91ef-4358-9760-b104e70b8273.mp4
+
 
 ### User Alert
 
 * **`알람기능`** 을 통해 게시글 **`좋아요`** 및 **`댓글`** 이벤트 소식을 해당 유저에게 전달
 
+https://user-images.githubusercontent.com/87924110/217843217-3f9e643c-6b59-4441-8f7a-cf17112720a8.mp4
+
 ### Image Resizing
 
 * **`AWS Lambda`** 함수의 **`Image Resizing`** 을 사용하여 이미지를 효율적으로 관리
 
+https://user-images.githubusercontent.com/87924110/217843264-701ebab5-cae4-4ed0-995d-e8baa84a86c2.mp4
 
 <br />
-
 
 ## Getting Started
 
