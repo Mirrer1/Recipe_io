@@ -1,7 +1,7 @@
 
 # Project Title
 
-* [**Recipe_io**](https://recipeio.ga/)
+* [**Recipe_io**](https://recipeio.site/)
 
 
 <br />
