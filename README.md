@@ -1,6 +1,7 @@
+
 # Project Title
 
-* **Recipe_io**
+* [**Recipe_io**](https://recipeio.ga/)
 
 
 <br />
@@ -16,20 +17,21 @@
 <br />
 
 
-## Technology Stack
+## Used Skills
 
 <div style={{display: 'flex'}}>
    <img src="https://img.shields.io/badge/HTML-bcbcbc?style=flat-square&logo=HTML5&logoColor=white"/>
    <img src="https://img.shields.io/badge/CSS-bcbcbc?style=flat-square&logo=CSS3&logoColor=white"/>
    <img src="https://img.shields.io/badge/JAVASCRIPT-bcbcbc?style=flat-square&logo=JavaScript&logoColor=white"/>
+   <img src="https://img.shields.io/badge/ANT DESIGN-bcbcbc?style=flat-square&logo=Ant Design&logoColor=white"/>
+   <img src="https://img.shields.io/badge/STYLED COMPONENTS-bcbcbc?style=flat-square&logo=styled-components&logoColor=white"/>
 </div>
 
 <div style={{display: 'flex'}}>
    <img src="https://img.shields.io/badge/REACT-bcbcbc?style=flat-square&logo=React&logoColor=white"/>
    <img src="https://img.shields.io/badge/REDUX-bcbcbc?style=flat-square&logo=Redux&logoColor=white"/>
    <img src="https://img.shields.io/badge/REDUX SAGA-bcbcbc?style=flat-square&logo=Redux-Saga&logoColor=white"/>
-   <img src="https://img.shields.io/badge/ANT DESIGN-bcbcbc?style=flat-square&logo=Ant Design&logoColor=white"/>
-   <img src="https://img.shields.io/badge/STYLED COMPONENTS-bcbcbc?style=flat-square&logo=styled-components&logoColor=white"/>
+   <img src="https://img.shields.io/badge/NEXT.JS-bcbcbc?style=flat-square&logo=Next.js&logoColor=white"/>   
 </div>
 
 <div style={{display: 'flex'}}>
@@ -40,33 +42,45 @@
 </div>
 
 <div style={{display: 'flex'}}>
+   <img src="https://img.shields.io/badge/GIT-bcbcbc?style=flat-square&logo=Git&logoColor=white"/>
+   <img src="https://img.shields.io/badge/GITHUB-bcbcbc?style=flat-square&logo=GitHub&logoColor=white"/>
    <img src="https://img.shields.io/badge/AWS-bcbcbc?style=flat-square&logo=Amazon AWS&logoColor=white"/>
    <img src="https://img.shields.io/badge/LAMBDA-bcbcbc?style=flat-square&logo=AWS Lambda&logoColor=white"/>
 </div>
 
+
 <br />
 
-## Representative Function
 
-### Login, Signup
+## Representative Feature
 
-* **`Passport`**, **`Nodemailer`** 를 통한 간편한 **`로그인`**, **`회원가입`** 기능
+### Post writing, editing
+
+* 직관적이고 간편한 **`게시글 작성`**, **`수정`**
+
+https://user-images.githubusercontent.com/87924110/217843061-256ebc09-f784-49bb-88b2-50c5932bf4d5.mp4
+
 
 ### Dashboard
 
-* **`Dashboard`** 페이지를 사용하여 유저의 **`좋아요`**, **`작성 게시글`**...등을 간편하게 확인할 수 있도록 UI를 구성
+* **`Dashboard`** 페이지를 통한 사용자의 **`스크랩`** , **`작성 게시글`** 조회
+
+https://user-images.githubusercontent.com/87924110/217843167-4dcda5d5-91ef-4358-9760-b104e70b8273.mp4
+
 
 ### User Alert
 
 * **`알람기능`** 을 통해 게시글 **`좋아요`** 및 **`댓글`** 이벤트 소식을 해당 유저에게 전달
 
+https://user-images.githubusercontent.com/87924110/217843217-3f9e643c-6b59-4441-8f7a-cf17112720a8.mp4
+
 ### Image Resizing
 
-* **`AWS Lambda`** 함수의 **`Image Resizing`** 작업을 통해 이미지를 효율적으로 관리
+* **`AWS Lambda`** 함수의 **`Image Resizing`** 을 사용하여 이미지를 효율적으로 관리
 
+https://user-images.githubusercontent.com/87924110/217843264-701ebab5-cae4-4ed0-995d-e8baa84a86c2.mp4
 
 <br />
-
 
 ## Getting Started
 
@@ -75,6 +89,10 @@
 * **`Internet Explorer`** 를 포함한 **모든 운영체제**에서 동작
 
 * 단, 게시글 공유는 **`IE`**, **`Chrome 66`** 이하 버전에서는 불가능
+
+
+<br />
+
 
 ### Executing program
 
@@ -85,6 +103,73 @@
 
 <br />
 
+
+### Installing
+
+#### Backend Settings
+
+* 프로젝트의 **`Back`** 폴더로 이동하여 관련 **`Package Install`**
+
+```bash
+cd back
+```
+
+```bash
+npm i
+```
+
+* **`Database`** 생성, **`Server`** 실행
+
+```bash
+npx sequelize db:create
+```
+
+```bash
+npm run dev
+```
+
+<br>
+
+
+#### Frontend Settings
+
+* 프로젝트의 **`Front`** 폴더로 이동하여 관련 **`Package Install`**
+
+```bash
+cd front
+```
+
+```bash
+npm i
+```
+
+<br>
+
+
+#### Project Start
+
+* 설치를 완료한 뒤 **각각의 `Terminal`** 에서 **`Server`, `Front` 실행**
+
+```bash
+cd back
+```
+
+```bash
+npm run dev
+```
+
+```bash
+// another terminal
+cd front
+```
+
+```bash
+npm run dev
+```
+
+<br />
+
+
 ## Version History
 
 * 0.1
@@ -94,14 +179,15 @@
 <br />
 
 
-## Authors
+## Author
 
 * Made by [**@Mirrer**](https://www.instagram.com/mirrerlike_/)
 
 
 <br />
 
-## Convey your Opinion
+
+## Contact
 
 * 본 서비스의 **버그** 및 **개선사항**에 대해서는 아래 메일로 전달해주시면 감사하겠습니다.
 
