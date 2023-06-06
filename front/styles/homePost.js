@@ -1,5 +1,11 @@
 import { Card, Button, List } from 'antd';
-import { GithubOutlined, InstagramOutlined, MailOutlined, ContainerOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
+import {
+  GithubOutlined,
+  InstagramOutlined,
+  MailOutlined,
+  ContainerOutlined,
+  ExclamationCircleOutlined,
+} from '@ant-design/icons';
 import styled, { createGlobalStyle } from 'styled-components';
 
 // HomePost Global Style
@@ -19,65 +25,64 @@ export const HomePostGlobalStyle = createGlobalStyle`
 
 // HomeFooter Styles
 export const FooterWrapper = styled.footer`
-  && {    
-    
+  && {
     border: 1px solid #f0f0f0;
     padding: 2em 8em 2em 4em;
   }
-`
+`;
 export const FooterBtn = styled(Button)`
-  && {    
+  && {
     margin-right: 1em;
   }
-`
+`;
 
 export const GitHubBtn = styled(GithubOutlined)`
-  && { 
+  && {
     font-size: 2rem;
-    background-color:#ffffff;
-    color:#4b4c4d;
+    background-color: #ffffff;
+    color: #4b4c4d;
   }
-`
+`;
 
 export const InstaGramBtn = styled(InstagramOutlined)`
-  && { 
+  && {
     font-size: 2rem;
-    background-color:#ffffff;
-    color:#4b4c4d;
+    background-color: #ffffff;
+    color: #4b4c4d;
   }
-`
+`;
 
 export const MailBtn = styled(MailOutlined)`
-  && { 
+  && {
     font-size: 2rem;
-    background-color:#ffffff;
-    color:#4b4c4d;
+    background-color: #ffffff;
+    color: #4b4c4d;
   }
-`
+`;
 
 export const BlogBtn = styled(ContainerOutlined)`
-  && { 
+  && {
     font-size: 2rem;
-    background-color:#ffffff;
-    color:#4b4c4d;
+    background-color: #ffffff;
+    color: #4b4c4d;
   }
-`
+`;
 
 export const MainText = styled.h1`
-  && { 
+  && {
     font-size: 1.5rem;
     letter-spacing: 0.25em;
-    color:#4b4c4d;
+    color: #4b4c4d;
     margin-bottom: 0;
   }
-`
+`;
 
 export const SubText = styled.p`
-  && { 
-    color:#c2c2c2;
+  && {
+    color: #c2c2c2;
     margin-bottom: 0;
   }
-`
+`;
 
 // TopPostList Style
 export const TopPostCardBody = {
@@ -94,7 +99,7 @@ export const TopList = styled(List)`
 
 export const TopImageWrapper = styled.div`
   && {
-    position: relative;    
+    position: relative;
     height: 230px;
     overflow: hidden;
   }
@@ -111,8 +116,8 @@ export const TopPostBtn = styled(Button)`
 `;
 
 export const TopPostBtnText = styled.span`
-  && {    
-    margin-left: 0.3em;    
+  && {
+    margin-left: 0.3em;
   }
 `;
 
@@ -124,7 +129,7 @@ export const RecentList = styled(List)`
 `;
 
 // RecentPostCard Style
-export const RecentCardBody = {  
+export const RecentCardBody = {
   height: '120px',
   overflow: 'hidden',
 };
@@ -137,7 +142,7 @@ export const RecentCard = styled(Card)`
 
 export const RecentImageWrapper = styled.div`
   && {
-    position: relative;    
+    position: relative;
     height: 260px;
     overflow: hidden;
   }
@@ -152,14 +157,14 @@ export const PostImage = styled.img`
     bottom: -9999px;
     left: -9999px;
     right: -9999px;
-    margin: auto;    
+    margin: auto;
   }
 `;
 
 // PostDeleteModal Style
 export const BtnWrapper = styled.div`
   && {
-    display: flex;    
+    display: flex;
     margin-bottom: 1em;
   }
 `;
@@ -187,5 +192,3 @@ export const ModalSubText = styled.p`
     opacity: 0.7;
   }
 `;
-
-

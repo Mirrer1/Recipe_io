@@ -5,15 +5,15 @@ import MyScrap from './MyScrap';
 import MyBoard from './MyBoard';
 import { MyPageGlobalStyle } from '../../styles/myPage';
 
-const MyInfo = () => { 
-  return (   
+const MyInfo = () => {
+  return (
     <section>
       <MyPageGlobalStyle />
       <NicknameEditForm />
       <MyScrap />
-      <MyBoard />        
-    </section> 
-  )
+      <MyBoard />
+    </section>
+  );
 };
 
 export default MyInfo;

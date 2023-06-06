@@ -1,33 +1,33 @@
 'use strict';
 
 module.exports = {
-  async up (queryInterface, Sequelize) {
-    await queryInterface.createTable('alerts', {          
+  async up(queryInterface, Sequelize) {
+    await queryInterface.createTable('alerts', {
       id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         primaryKey: true,
         allowNull: false,
-      },      
+      },
       createdAt: {
-        type: Sequelize.DATE,        
+        type: Sequelize.DATE,
         allowNull: false,
-      },      
+      },
       updatedAt: {
-        type: Sequelize.DATE,        
+        type: Sequelize.DATE,
         allowNull: false,
       },
       type: {
         type: Sequelize.STRING(10),
         allowNull: false,
-      },     
+      },
       CommentId: {
         type: Sequelize.INTEGER,
         references: {
           model: 'comments',
           key: 'id',
         },
-      },       
+      },
       PostId: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -35,7 +35,7 @@ module.exports = {
           model: 'posts',
           key: 'id',
         },
-      },      
+      },
       AlerterId: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -43,7 +43,7 @@ module.exports = {
           model: 'users',
           key: 'id',
         },
-      },      
+      },
       AlertedId: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -51,11 +51,11 @@ module.exports = {
           model: 'users',
           key: 'id',
         },
-      },      
+      },
     });
   },
 
-  async down (queryInterface, Sequelize) {    
-    await queryInterface.dropTable('alerts')           
-  }
+  async down(queryInterface, Sequelize) {
+    await queryInterface.dropTable('alerts');
+  },
 };

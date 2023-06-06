@@ -2,22 +2,22 @@ import produce from '../util/produce';
 
 export const initialState = {
   me: null,
-  userInfo: null,  
+  userInfo: null,
   userAlert: null,
-  likedPosts: [],  
+  likedPosts: [],
   boardPosts: [],
   loadMyInfoLoading: false, // 로그인 정보 불러오기
   loadMyInfoDone: false,
   loadMyInfoError: null,
   loadMyAlertLoading: false, // 나의 알람 정보 불러오기
   loadMyAlertDone: false,
-  loadMyAlertError: null,  
+  loadMyAlertError: null,
   checkedAlertLoading: false, // 알람 정보 확인
   checkedAlertDone: false,
   checkedAlertError: null,
   loadUserInfoLoading: false, // 사용자 정보 불러오기
   loadUserInfoDone: false,
-  loadUserInfoError: null,  
+  loadUserInfoError: null,
   loadLikedPostLoading: false, // 좋아요 게시글 불러오기
   loadLikedPostDone: false,
   loadLikedPostError: null,
@@ -29,10 +29,10 @@ export const initialState = {
   logInError: null,
   logOutLoading: false, // 로그아웃 시도
   logOutDone: false,
-  logOutError: null,    
+  logOutError: null,
   sendAuthMailLoading: false, // 회원가입 인증메일 전송
   sendAuthMailDone: false,
-  sendAuthMailError: null,    
+  sendAuthMailError: null,
   authCode: null, // 회원가입 인증코드
   signUpLoading: false, // 회원가입 시도
   signUpDone: false,
@@ -40,7 +40,7 @@ export const initialState = {
   nicknameEditLoading: false, // 닉네임수정 시도
   nicknameEditDone: false,
   nicknameEditError: null,
-  contactFormVisible: false,  // 컨텍트 모달창 띄우기
+  contactFormVisible: false, // 컨텍트 모달창 띄우기
 };
 
 export const LOAD_MY_INFO_REQUEST = 'LOAD_MY_INFO_REQUEST';
@@ -116,7 +116,7 @@ const reducer = (state = initialState, action) => {
       case LOAD_MY_INFO_FAILURE:
         draft.loadMyInfoLoading = false;
         draft.loadMyInfoError = action.error;
-        break;   
+        break;
       case LOAD_MY_ALERT_REQUEST:
         draft.loadMyAlertLoading = true;
         draft.loadMyAlertDone = false;
@@ -125,7 +125,7 @@ const reducer = (state = initialState, action) => {
       case LOAD_MY_ALERT_SUCCESS:
         draft.loadMyAlertLoading = false;
         draft.loadMyAlertDone = true;
-        draft.userAlert = action.data;        
+        draft.userAlert = action.data;
         break;
       case LOAD_MY_ALERT_FAILURE:
         draft.loadMyAlertLoading = false;
@@ -137,9 +137,11 @@ const reducer = (state = initialState, action) => {
         draft.checkedAlertError = null;
         break;
       case CHECKED_ALERT_SUCCESS:
-        draft.userAlert = draft.userAlert.filter((v) => v.id !== action.data.id);
+        draft.userAlert = draft.userAlert.filter(
+          (v) => v.id !== action.data.id
+        );
         draft.checkedAlertLoading = false;
-        draft.checkedAlertDone = true;          
+        draft.checkedAlertDone = true;
         break;
       case CHECKED_ALERT_FAILURE:
         draft.checkedAlertLoading = false;
@@ -172,7 +174,7 @@ const reducer = (state = initialState, action) => {
       case LOAD_LIKED_POSTS_FAILURE:
         draft.loadLikedPostLoading = false;
         draft.loadLikedPostError = action.error;
-        break;   
+        break;
       case LOAD_BOARD_POSTS_REQUEST:
         draft.loadBoardPostLoading = true;
         draft.loadBoardPostDone = false;
@@ -186,7 +188,7 @@ const reducer = (state = initialState, action) => {
       case LOAD_BOARD_POSTS_FAILURE:
         draft.loadBoardPostLoading = false;
         draft.loadBoardPostError = action.error;
-        break;  
+        break;
       case RESET_LOGIN_STATE:
         draft.logInLoading = false;
         draft.logInDone = false;
@@ -229,12 +231,12 @@ const reducer = (state = initialState, action) => {
         draft.sendAuthMailLoading = true;
         draft.sendAuthMailDone = false;
         draft.sendAuthMailError = null;
-        break;        
+        break;
       case SEND_AUTH_MAIL_SUCCESS:
         draft.sendAuthMailLoading = false;
         draft.sendAuthMailDone = true;
         draft.authCode = action.data;
-        break;        
+        break;
       case SEND_AUTH_MAIL_FAILURE:
         draft.sendAuthMailLoading = false;
         draft.sendAuthMailError = action.error;
@@ -243,11 +245,11 @@ const reducer = (state = initialState, action) => {
         draft.signUpLoading = true;
         draft.signUpDone = false;
         draft.signUpError = null;
-        break;        
+        break;
       case SIGN_UP_SUCCESS:
         draft.signUpLoading = false;
         draft.signUpDone = true;
-        break;        
+        break;
       case SIGN_UP_FAILURE:
         draft.signUpLoading = false;
         draft.signUpError = action.error;
@@ -256,51 +258,91 @@ const reducer = (state = initialState, action) => {
         draft.nicknameEditLoading = true;
         draft.nicknameEditDone = false;
         draft.nicknameEditError = null;
-        break;      
+        break;
       case NICKNAME_EDIT_SUCCESS:
         draft.me.nickname = action.data.nickname;
         draft.nicknameEditLoading = false;
         draft.nicknameEditDone = true;
-        break;        
+        break;
       case NICKNAME_EDIT_FAILURE:
         draft.nicknameEditLoading = false;
         draft.nicknameEditError = action.error;
-        break;    
+        break;
       case REMOVE_POST_OF_MYPAGE: {
-        const likedPost = draft.likedPosts.find((v) => v.id === action.data.PostId);
-        const boardPost = draft.boardPosts.find((v) => v.id === action.data.PostId);
-        if (likedPost) draft.likedPosts = draft.likedPosts.filter((v) => v.id !== action.data.PostId);
-        if (boardPost) draft.boardPosts = draft.boardPosts.filter((v) => v.id !== action.data.PostId);
+        const likedPost = draft.likedPosts.find(
+          (v) => v.id === action.data.PostId
+        );
+        const boardPost = draft.boardPosts.find(
+          (v) => v.id === action.data.PostId
+        );
+        if (likedPost)
+          draft.likedPosts = draft.likedPosts.filter(
+            (v) => v.id !== action.data.PostId
+          );
+        if (boardPost)
+          draft.boardPosts = draft.boardPosts.filter(
+            (v) => v.id !== action.data.PostId
+          );
         break;
       }
       case ADD_LIKED_POST_OF_MYPAGE: {
         draft.likedPosts.unshift(action.data.Post);
-        const likedPost = draft.likedPosts.find((v) => v.id === action.data.PostId);
-        const boardPost = draft.boardPosts.find((v) => v.id === action.data.PostId);
+        const likedPost = draft.likedPosts.find(
+          (v) => v.id === action.data.PostId
+        );
+        const boardPost = draft.boardPosts.find(
+          (v) => v.id === action.data.PostId
+        );
         if (likedPost) likedPost.Likers.push({ id: action.data.UserId });
         if (boardPost) boardPost.Likers.push({ id: action.data.UserId });
         break;
-      }        
+      }
       case REMOVE_LIKED_POST_OF_MYPAGE: {
-        draft.likedPosts = draft.likedPosts.filter((v) => v.id !== action.data.PostId);
-        const likedPost = draft.likedPosts.find((v) => v.id === action.data.PostId);
-        const boardPost = draft.boardPosts.find((v) => v.id === action.data.PostId);
-        if (likedPost) likedPost.Likers = likedPost.Likers.filter((v) => v.id !== action.data.UserId);          
-        if (boardPost) boardPost.Likers = boardPost.Likers.filter((v) => v.id !== action.data.UserId);          
+        draft.likedPosts = draft.likedPosts.filter(
+          (v) => v.id !== action.data.PostId
+        );
+        const likedPost = draft.likedPosts.find(
+          (v) => v.id === action.data.PostId
+        );
+        const boardPost = draft.boardPosts.find(
+          (v) => v.id === action.data.PostId
+        );
+        if (likedPost)
+          likedPost.Likers = likedPost.Likers.filter(
+            (v) => v.id !== action.data.UserId
+          );
+        if (boardPost)
+          boardPost.Likers = boardPost.Likers.filter(
+            (v) => v.id !== action.data.UserId
+          );
         break;
       }
       case ADD_COMMENT_POST_OF_MYPAGE: {
-        const likedPost = draft.likedPosts.find((v) => v.id === action.data.PostId);
-        const boardPost = draft.boardPosts.find((v) => v.id === action.data.PostId);
+        const likedPost = draft.likedPosts.find(
+          (v) => v.id === action.data.PostId
+        );
+        const boardPost = draft.boardPosts.find(
+          (v) => v.id === action.data.PostId
+        );
         if (likedPost) likedPost.Comments.unshift(action.data);
         if (boardPost) boardPost.Comments.unshift(action.data);
         break;
       }
       case REMOVE_COMMENT_POST_OF_MYPAGE: {
-        const likedPost = draft.likedPosts.find((v) => v.id === action.data.PostId);
-        const boardPost = draft.boardPosts.find((v) => v.id === action.data.PostId);
-        if (likedPost) likedPost.Comments = likedPost.Comments.filter((v) => v.id !== action.data.CommentId);        
-        if (boardPost) boardPost.Comments = boardPost.Comments.filter((v) => v.id !== action.data.CommentId);        
+        const likedPost = draft.likedPosts.find(
+          (v) => v.id === action.data.PostId
+        );
+        const boardPost = draft.boardPosts.find(
+          (v) => v.id === action.data.PostId
+        );
+        if (likedPost)
+          likedPost.Comments = likedPost.Comments.filter(
+            (v) => v.id !== action.data.CommentId
+          );
+        if (boardPost)
+          boardPost.Comments = boardPost.Comments.filter(
+            (v) => v.id !== action.data.CommentId
+          );
         break;
       }
       case CONTACT_FORM_VISIBLE:

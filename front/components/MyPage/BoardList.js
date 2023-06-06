@@ -9,22 +9,23 @@ const BoardList = () => {
 
   return (
     <section>
-      <List  
-          itemLayout="vertical"
-          bordered    
-          size="large"
-          pagination={{
-            onChange: (page) => console.log(page), pageSize: 3,
-          }}
-          dataSource={boardPosts}    
-          renderItem={(item) => (  
-            <List.Item key={item.id}>
-              <BoardCard post={item}  />
-            </List.Item>         
+      <List
+        itemLayout='vertical'
+        bordered
+        size='large'
+        pagination={{
+          onChange: (page) => console.log(page),
+          pageSize: 3,
+        }}
+        dataSource={boardPosts}
+        renderItem={(item) => (
+          <List.Item key={item.id}>
+            <BoardCard post={item} />
+          </List.Item>
         )}
-      />          
+      />
     </section>
-  )
+  );
 };
 
 export default BoardList;

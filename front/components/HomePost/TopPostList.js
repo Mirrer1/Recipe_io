@@ -11,23 +11,24 @@ const TopPostList = ({ topPosts }) => {
       <TopList
         grid={{ gutter: 16, column: 4 }}
         bordered
-        itemLayout="horizontal"
+        itemLayout='horizontal'
         pagination={{
-          onChange: (page) => console.log(page), pageSize: 4,
+          onChange: (page) => console.log(page),
+          pageSize: 4,
         }}
         dataSource={topPosts}
-        renderItem={item => (
+        renderItem={(item) => (
           <List.Item>
             <TopPostCard post={item} key={item.id} />
           </List.Item>
         )}
-      />    
+      />
     </section>
-  )
-}
+  );
+};
 
 TopPostList.propTypes = {
-  topPosts: PropTypes.arrayOf(PropTypes.object),  
+  topPosts: PropTypes.arrayOf(PropTypes.object),
 };
 
 export default TopPostList;

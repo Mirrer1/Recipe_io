@@ -5,34 +5,47 @@ const { Post, User, Image, Comment } = require('../models');
 
 const router = express.Router();
 
-router.get('/top', async (req, res, next) => { // loadTopPostsAPI / GET /posts/top
+router.get('/top', async (req, res, next) => {
+  // loadTopPostsAPI / GET /posts/top
   try {
     const posts = await Post.findAll({
-      offset: 0,                           
+      offset: 0,
       order: [
-        [Sequelize.literal("COUNT(`Likers->Like`.`PostId`) OVER (PARTITION BY `Post`.`id`)"), "DESC"],
+        [
+          Sequelize.literal(
+            'COUNT(`Likers->Like`.`PostId`) OVER (PARTITION BY `Post`.`id`)'
+          ),
+          'DESC',
+        ],
         [Comment, 'createdAt', 'DESC'],
         [Image, 'id', 'ASC'],
       ],
       subQuery: false,
-      include: [{
-        model: User,
-        attributes: ['id', 'nickname'],
-      }, {
-        model: Image,
-      }, {
-        model: Comment,
-        include: [{
+      include: [
+        {
           model: User,
           attributes: ['id', 'nickname'],
-        }],
-      }, {
-        model: User,
-        as: 'Likers',
-        attributes: ['id'],               
-      }],          
-    })
-    const splitPosts = posts.slice(0, 12);       
+        },
+        {
+          model: Image,
+        },
+        {
+          model: Comment,
+          include: [
+            {
+              model: User,
+              attributes: ['id', 'nickname'],
+            },
+          ],
+        },
+        {
+          model: User,
+          as: 'Likers',
+          attributes: ['id'],
+        },
+      ],
+    });
+    const splitPosts = posts.slice(0, 12);
     res.status(200).json(splitPosts);
   } catch (error) {
     console.error(error);
@@ -40,7 +53,8 @@ router.get('/top', async (req, res, next) => { // loadTopPostsAPI / GET /posts/t
   }
 });
 
-router.get('/', async (req, res, next) => { // loadPostsAPI / GET /posts
+router.get('/', async (req, res, next) => {
+  // loadPostsAPI / GET /posts
   try {
     const where = {};
     if (parseInt(req.query.lastId, 10)) {
@@ -55,23 +69,30 @@ router.get('/', async (req, res, next) => { // loadPostsAPI / GET /posts
         [Comment, 'createdAt', 'DESC'],
         [Image, 'id', 'ASC'],
       ],
-      include: [{
-        model: User,
-        attributes: ['id', 'nickname'],
-      }, {
-        model: Image,
-      }, {
-        model: Comment,
-        include: [{
+      include: [
+        {
           model: User,
           attributes: ['id', 'nickname'],
-        }],
-      }, {
-        model: User,
-        as: 'Likers',
-        attributes: ['id'],
-      }],
-    });    
+        },
+        {
+          model: Image,
+        },
+        {
+          model: Comment,
+          include: [
+            {
+              model: User,
+              attributes: ['id', 'nickname'],
+            },
+          ],
+        },
+        {
+          model: User,
+          as: 'Likers',
+          attributes: ['id'],
+        },
+      ],
+    });
     res.status(200).json(posts);
   } catch (error) {
     console.error(error);

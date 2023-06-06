@@ -12,23 +12,32 @@
     "node": true,
     "es6": true
   },
-  "extends": [
-    "airbnb"
-  ],
-  "plugins": [
-    "import",
-    "react-hooks",
-    "jsx-a11y"
-  ],
+  "extends": ["airbnb"],
+  "plugins": ["import", "react-hooks", "jsx-a11y"],
   "rules": {
-    "jsx-a11y/label-has-associated-control": "off",
-    "jsx-a11y/anchor-is-valid": "off",
-    "no-console": "off",
-    "no-underscore-dangle": "off",
-    "react/forbid-prop-types": "off",
-    "react/jsx-filename-extension": "off",
-    "object-curly-newline": "off",
-    "linebreak-style": "off",
-    "no-param-reassign": "off"
+    "react/react-in-jsx-scope": "off",
+    "spaced-comment": "error",
+    "quotes": ["error", "single"],
+    "no-duplicate-imports": "error",
+    "react/prop-types": "off",
+    "no-var": "warn",
+    "no-multiple-empty-lines": "warn",
+    "no-console": ["warn", { "allow": ["warn", "error"] }],
+    "eqeqeq": "warn",
+    "dot-notation": "warn",
+    "react/destructuring-assignment": "warn",
+    "react/jsx-pascal-case": "warn",
+    "react/no-direct-mutation-state": "warn",
+    "react/jsx-no-useless-fragment": "warn",
+    "react/no-unused-state": "warn",
+    "react/jsx-key": "warn",
+    "react/self-closing-comp": "warn",
+    "react/jsx-curly-brace-presence": "warn",
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ]
   }
 }

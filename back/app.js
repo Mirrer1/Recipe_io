@@ -13,12 +13,13 @@ const postRouter = require('./routes/post');
 const postsRouter = require('./routes/posts');
 const userRouter = require('./routes/user');
 const hashtagRouter = require('./routes/hashtag');
-const db = require('./models')
+const db = require('./models');
 const app = express();
 const passportConfig = require('./passport');
 
 dotenv.config();
-db.sequelize.sync()
+db.sequelize
+  .sync()
   .then(() => {
     console.log('db 연결 성공');
   })
@@ -27,19 +28,23 @@ db.sequelize.sync()
 passportConfig();
 
 if (process.env.NODE_ENV === 'production') {
-  app.use(morgan('combined'));  
+  app.use(morgan('combined'));
   app.use(hpp());
   app.use(helmet());
-  app.use(cors({
-    origin: 'http://recipeio.ga',
-    credentials: true,
-  }));
+  app.use(
+    cors({
+      origin: 'http://recipeio.site',
+      credentials: true,
+    })
+  );
 } else {
   app.use(morgan('dev'));
-  app.use(cors({
-    origin: true,
-    credentials: true,
-  }));
+  app.use(
+    cors({
+      origin: true,
+      credentials: true,
+    })
+  );
 }
 
 app.use('/', express.static(path.join(__dirname, 'uploads')));
@@ -47,16 +52,18 @@ app.use(express.json({ limit: '100mb' }));
 app.use(express.urlencoded({ limit: '100mb', extended: true }));
 
 app.use(cookieParser(process.env.COOKIE_SECRET));
-app.use(session({
-  saveUninitialized: false,
-  resave: false,
-  secret: process.env.COOKIE_SECRET,
-  cookie: {
-    httpOnly: true,
-    secure: false,
-    domain: process.env.NODE_ENV === 'production' && '.recipeio.ga',
-  }
-}));
+app.use(
+  session({
+    saveUninitialized: false,
+    resave: false,
+    secret: process.env.COOKIE_SECRET,
+    cookie: {
+      httpOnly: true,
+      secure: false,
+      domain: process.env.NODE_ENV === 'production' && '.recipeio.site',
+    },
+  })
+);
 app.use(passport.initialize());
 app.use(passport.session());
 

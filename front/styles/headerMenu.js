@@ -1,6 +1,14 @@
 import styled, { createGlobalStyle } from 'styled-components';
 import { Menu, Form, Button, Spin, Row, Col, Avatar, Input } from 'antd';
-import { UserOutlined, HomeOutlined, LogoutOutlined, BellOutlined, LoginOutlined, DeleteOutlined, DownOutlined } from '@ant-design/icons';
+import {
+  UserOutlined,
+  HomeOutlined,
+  LogoutOutlined,
+  BellOutlined,
+  LoginOutlined,
+  DeleteOutlined,
+  DownOutlined,
+} from '@ant-design/icons';
 
 // HeaderMenu Global Style
 export const MenuGlobalStyle = createGlobalStyle`  
@@ -11,35 +19,35 @@ export const MenuGlobalStyle = createGlobalStyle`
   .ant-menu-item-selected {
     background-color: white !important;  
   }
-`
+`;
 
 // Common Styles for Mypage
 export const HomeIcon = styled(HomeOutlined)`
   && {
     font-size: 1.2rem;
   }
-`
+`;
 export const UserIcon = styled(UserOutlined)`
   && {
     font-size: 1.2rem;
   }
-`
+`;
 
 export const NewsIcon = styled(BellOutlined)`
   && {
     font-size: 1.2rem;
   }
-`
+`;
 
 // LoggedinMenu Style
 export const MenuRowWrapper = styled(Row)`
-  && {    
+  && {
     padding: 1em 0.5em;
   }
 `;
 
 export const MenuColWrapper = styled(Col)`
-  && {    
+  && {
     width: 100%;
   }
 `;
@@ -52,7 +60,7 @@ export const LoggedinMenu = styled(Menu)`
 `;
 
 export const MenuAlertExists = styled(Menu.Item)`
-  && {    
+  && {
     text-align: center;
     padding: 0;
     margin: 0.7em 0 0 0;
@@ -60,7 +68,7 @@ export const MenuAlertExists = styled(Menu.Item)`
 `;
 
 export const AlertMoreMenu = styled(Menu.Item)`
-  && {    
+  && {
     text-align: center;
   }
 `;
@@ -68,7 +76,7 @@ export const AlertMoreMenu = styled(Menu.Item)`
 export const AlertMoreBtn = styled(Button)`
   && {
     width: 3em;
-    border: none;    
+    border: none;
     box-shadow: none;
   }
 `;
@@ -84,19 +92,19 @@ export const SpinIcon = styled(Spin)`
   && {
     padding-left: 2.5em;
   }
-`
+`;
 
 export const LogoutIcon = styled(LogoutOutlined)`
   && {
     font-size: 1.2rem;
   }
-`
+`;
 
 export const UserInfo = styled.div`
   && {
     display: flex;
     justify-content: center;
-    align-items: center; 
+    align-items: center;
     margin-right: 3em;
   }
 `;
@@ -121,13 +129,13 @@ export const UserAvatarLink = styled.a`
 
 export const UserNickname = styled.div`
   && {
-    font-size: 1.2rem;        
+    font-size: 1.2rem;
     line-height: 1.2;
   }
 `;
 
 export const UserNicknameLink = styled.a`
-  && {    
+  && {
     font-size: 1.25rem;
     color: black;
   }
@@ -135,7 +143,7 @@ export const UserNicknameLink = styled.a`
 
 export const UserEmail = styled.div`
   && {
-    font-size: 0.7rem;    
+    font-size: 0.7rem;
   }
 `;
 
@@ -146,7 +154,7 @@ export const UserEmailLink = styled.a`
 `;
 
 export const AlertText = styled(Button)`
-  && {    
+  && {
     border: none;
     box-shadow: none;
     padding-right: 0.8em;
@@ -154,13 +162,13 @@ export const AlertText = styled(Button)`
 `;
 
 export const AlertUserNickname = styled.span`
-  && {    
+  && {
     margin-bottom: 0.5em;
   }
 `;
 
 export const AlertDeleteBtn = styled(Button)`
-  && {    
+  && {
     border: none;
     box-shadow: none;
     margin-right: 0.8em;
@@ -168,7 +176,7 @@ export const AlertDeleteBtn = styled(Button)`
 `;
 
 export const AlertDeleteIcon = styled(DeleteOutlined)`
-  && {    
+  && {
     opacity: 0.4;
   }
 `;
@@ -176,7 +184,7 @@ export const AlertDeleteIcon = styled(DeleteOutlined)`
 // UnLoggedinMenu Style
 export const LoggedoutMenu = styled(Menu)`
   && {
-    font-size: 1.2rem;  
+    font-size: 1.2rem;
     padding: 0.75em 0.4em 0.75em 0.4em;
     border: none;
   }
@@ -186,7 +194,7 @@ export const LoginIcon = styled(LoginOutlined)`
   && {
     font-size: 1.2rem;
   }
-`
+`;
 
 // LoginForm Style
 export const FormWrapper = styled(Form)`
@@ -197,7 +205,7 @@ export const FormWrapper = styled(Form)`
 
 export const InputWrapper = styled(Input.Password)`
   && {
-    font-family: "굴림";
+    font-family: '굴림';
   }
 `;
 

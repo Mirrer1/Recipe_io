@@ -1,20 +1,24 @@
 import { Button, Input, Result } from 'antd';
-import { NotificationOutlined, BarChartOutlined, SmileOutlined } from '@ant-design/icons';
+import {
+  NotificationOutlined,
+  BarChartOutlined,
+  SmileOutlined,
+} from '@ant-design/icons';
 import styled from 'styled-components';
 
 // Common Styles for Pages
 export const PageMainText = styled.h1`
   && {
-    font-size: 2.5rem;    
+    font-size: 2.5rem;
     letter-spacing: 0.1em;
-    color:#4b4c4d;
+    color: #4b4c4d;
     margin: 0;
   }
 `;
 
 export const PageSubText = styled.p`
   && {
-    font-size: 1rem;    
+    font-size: 1rem;
     margin: 0;
     color: #c2c2c2;
   }
@@ -41,7 +45,7 @@ export const HomeLogoText = styled.div`
   && {
     display: flex;
     flex-direction: column;
-    justify-content: start;  
+    justify-content: start;
   }
 `;
 
@@ -75,7 +79,7 @@ export const TopPostsIcon = styled(NotificationOutlined)`
 
 export const HomePostsText = styled.span`
   && {
-    font-size: 1.2rem;    
+    font-size: 1.2rem;
   }
 `;
 
@@ -99,7 +103,7 @@ export const MypageText = styled.div`
     flex-direction: column;
     justify-content: start;
     padding: 0.2em 1em;
-    margin-bottom: 2em;  
+    margin-bottom: 2em;
   }
 `;
 
@@ -113,16 +117,16 @@ export const PostingText = styled.header`
   }
 `;
 
-export const LogoutResult = styled(Result)` 
+export const LogoutResult = styled(Result)`
   && {
     margin-top: 6em;
   }
 `;
 
 // SignUp Page Style
-export const SignupWrapper = styled.div`  
+export const SignupWrapper = styled.div`
   && {
-    padding: 2em;  
+    padding: 2em;
   }
 `;
 
@@ -130,13 +134,13 @@ export const SignupText = styled.header`
   && {
     display: flex;
     flex-direction: column;
-    justify-content: center;  
+    justify-content: center;
     align-items: center;
     margin-bottom: 1.5em;
   }
 `;
 
-export const SignupResult = styled(Result)`  
+export const SignupResult = styled(Result)`
   && {
     margin-top: 6em;
   }

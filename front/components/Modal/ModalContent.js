@@ -4,14 +4,22 @@ import PropTypes from 'prop-types';
 import Router from 'next/router';
 
 import ModalImage from './ModalImage';
-import { visiblePostDeleteModalAction, moveToEditPostRequestAction } from '../../reducers/post';
-import { ContentBtnWrapper, ContentBtn, ContentImageWrapper, ContentCard } from '../../styles/modal';
+import {
+  visiblePostDeleteModalAction,
+  moveToEditPostRequestAction,
+} from '../../reducers/post';
+import {
+  ContentBtnWrapper,
+  ContentBtn,
+  ContentImageWrapper,
+  ContentCard,
+} from '../../styles/modal';
 
-const ModalContent = ({ post }) => {  
-  const dispatch = useDispatch();      
-  const id = useSelector((state) => state.user.me && state.user.me.id);  
-  
-  const showPostDeleteModal = useCallback(() => {        
+const ModalContent = ({ post }) => {
+  const dispatch = useDispatch();
+  const id = useSelector((state) => state.user.me && state.user.me.id);
+
+  const showPostDeleteModal = useCallback(() => {
     dispatch(visiblePostDeleteModalAction(post.id));
   }, []);
 
@@ -21,26 +29,33 @@ const ModalContent = ({ post }) => {
   }, []);
 
   return (
-    <>      
-      { 
-        (id && post.User.id === id) &&
-          (
-            <ContentBtnWrapper align='end'>
-              <ContentBtn type='text' onClick={onClickEditPost}>수정</ContentBtn>
-              <ContentBtn type='text' danger onClick={showPostDeleteModal}>삭제</ContentBtn>          
-            </ContentBtnWrapper> 
-          )
-      }
+    <>
+      {id && post.User.id === id && (
+        <ContentBtnWrapper align='end'>
+          <ContentBtn type='text' onClick={onClickEditPost}>
+            수정
+          </ContentBtn>
+          <ContentBtn type='text' danger onClick={showPostDeleteModal}>
+            삭제
+          </ContentBtn>
+        </ContentBtnWrapper>
+      )}
 
       <ContentImageWrapper>
-        <ModalImage PostImages={post.Images}/>
+        <ModalImage PostImages={post.Images} />
       </ContentImageWrapper>
-      
-      <ContentCard title='Ingredient' bordered={false}>{post.ingredient}</ContentCard>
-      <ContentCard title='Recipes' bordered={false}>{post.recipes}</ContentCard>
-      <ContentCard title='Tips' bordered={false}>{post.tips}</ContentCard>
+
+      <ContentCard title='Ingredient' bordered={false}>
+        {post.ingredient}
+      </ContentCard>
+      <ContentCard title='Recipes' bordered={false}>
+        {post.recipes}
+      </ContentCard>
+      <ContentCard title='Tips' bordered={false}>
+        {post.tips}
+      </ContentCard>
     </>
-  )
+  );
 };
 
 ModalContent.propTypes = {
@@ -55,11 +70,11 @@ ModalContent.propTypes = {
     createdAt: PropTypes.string,
     updatedAt: PropTypes.string,
     UserId: PropTypes.number,
-    User: PropTypes.object,    
+    User: PropTypes.object,
     Images: PropTypes.arrayOf(PropTypes.object),
     Comments: PropTypes.arrayOf(PropTypes.object),
     Likers: PropTypes.arrayOf(PropTypes.object),
-  })
+  }),
 };
 
 export default ModalContent;

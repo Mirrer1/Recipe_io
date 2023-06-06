@@ -4,41 +4,54 @@ import { Card } from 'antd';
 import { DeleteOutlined } from '@ant-design/icons';
 import PropTypes from 'prop-types';
 
-import { loadPostRequestAction, unLikePostRequestAction } from '../../reducers/post';
-import { ScrapCardBody, ScrapCardWrapper, ScrapImage, MyPageImage } from '../../styles/myPage';
+import {
+  loadPostRequestAction,
+  unLikePostRequestAction,
+} from '../../reducers/post';
+import {
+  ScrapCardBody,
+  ScrapCardWrapper,
+  ScrapImage,
+  MyPageImage,
+} from '../../styles/myPage';
 
-const ScrapCard = ({ post }) => {  
+const ScrapCard = ({ post }) => {
   const dispatch = useDispatch();
 
-  const showPostModal = useCallback(() => {        
+  const showPostModal = useCallback(() => {
     dispatch(loadPostRequestAction(post.id));
-  }, []);  
-  
-  const unLikePost = useCallback((id) => () => {
-    dispatch(unLikePostRequestAction(id));        
   }, []);
-  
+
+  const unLikePost = useCallback(
+    (id) => () => {
+      dispatch(unLikePostRequestAction(id));
+    },
+    []
+  );
+
   return (
-    <article>      
+    <article>
       <ScrapCardWrapper
-        bodyStyle={ScrapCardBody}    
+        bodyStyle={ScrapCardBody}
         cover={
           <ScrapImage>
-            <MyPageImage 
-              alt='scrap post image'                            
+            <MyPageImage
+              alt='scrap post image'
               src={`${post.Images[0].src}`}
               onClick={showPostModal}
             />
           </ScrapImage>
         }
-        actions={[<DeleteOutlined key='delete' onClick={unLikePost(post.id)} />]}
+        actions={[
+          <DeleteOutlined key='delete' onClick={unLikePost(post.id)} />,
+        ]}
         hoverable
       >
         <Card.Meta
           title={post.title}
           description={post.desc}
           onClick={showPostModal}
-        />            
+        />
       </ScrapCardWrapper>
     </article>
   );
@@ -56,11 +69,11 @@ ScrapCard.propTypes = {
     createdAt: PropTypes.string,
     updatedAt: PropTypes.string,
     UserId: PropTypes.number,
-    User: PropTypes.object,    
+    User: PropTypes.object,
     Images: PropTypes.arrayOf(PropTypes.object),
     Comments: PropTypes.arrayOf(PropTypes.object),
     Likers: PropTypes.arrayOf(PropTypes.object),
-  })
+  }),
 };
 
 export default ScrapCard;

@@ -3,17 +3,17 @@ body {
 }
 
 .light {
-  font-weight: 300
+  font-weight: 300;
 }
 
 .normal {
-  font-weight: 400
+  font-weight: 400;
 }
 
 .bold {
-  font-weight: 700
+  font-weight: 700;
 }
 
 .bolder {
-  font-weight: 800
+  font-weight: 800;
 }

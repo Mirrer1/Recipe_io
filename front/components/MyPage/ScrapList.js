@@ -6,21 +6,23 @@ import ScrapCard from './ScrapCard';
 import { LOAD_LIKED_POSTS_REQUEST } from '../../reducers/user';
 import { ListWrapper, BtnWrapper } from '../../styles/myPage';
 
-const ScrapList = () => {  
+const ScrapList = () => {
   const dispatch = useDispatch();
-  const { likedPosts, loadLikedPostLoading } = useSelector((state) => state.user);    
-  const [ likedLimit, setLikedLimit ] = useState(6);
-    
-  const moreLikedPosts = useCallback(() => {    
+  const { likedPosts, loadLikedPostLoading } = useSelector(
+    (state) => state.user
+  );
+  const [likedLimit, setLikedLimit] = useState(6);
+
+  const moreLikedPosts = useCallback(() => {
     setLikedLimit((prev) => prev + 6);
   }, []);
 
-  useEffect(() => {    
+  useEffect(() => {
     if (likedLimit > 6) {
       dispatch({
         type: LOAD_LIKED_POSTS_REQUEST,
         likedLimit,
-      })
+      });
     }
   }, [likedLimit]);
 
@@ -28,12 +30,25 @@ const ScrapList = () => {
     <section>
       <ListWrapper
         grid={{
-          gutter: 16, column: 5, xs: 1, sm: 2, md: 3, lg: 3, xl: 5, xxl: 6,
+          gutter: 16,
+          column: 5,
+          xs: 1,
+          sm: 2,
+          md: 3,
+          lg: 3,
+          xl: 5,
+          xxl: 6,
         }}
         bordered
         loadMore={
           <BtnWrapper>
-            <Button size='large' onClick={moreLikedPosts} loading={loadLikedPostLoading}>More View</Button>
+            <Button
+              size='large'
+              onClick={moreLikedPosts}
+              loading={loadLikedPostLoading}
+            >
+              More View
+            </Button>
           </BtnWrapper>
         }
         dataSource={likedPosts}
@@ -42,9 +57,8 @@ const ScrapList = () => {
             <ScrapCard post={item} />
           </List.Item>
         )}
-      >
-      </ListWrapper>
-    </section>    
+      ></ListWrapper>
+    </section>
   );
 };
 

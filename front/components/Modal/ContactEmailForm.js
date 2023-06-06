@@ -4,11 +4,16 @@ import { Form, Input, Modal, Button, Row, message } from 'antd';
 import { init, send } from 'emailjs-com';
 
 import { CONTACT_FORM_INVISIBLE } from '../../reducers/user';
-import { ContactFormIcon, ContactFormMainText, ContactFormSubText, ContactFormBtn } from '../../styles/modal';
+import {
+  ContactFormIcon,
+  ContactFormMainText,
+  ContactFormSubText,
+  ContactFormBtn,
+} from '../../styles/modal';
 
 const ContactEmailForm = () => {
   const dispatch = useDispatch();
-  const [form] = Form.useForm();    
+  const [form] = Form.useForm();
   const { me, contactFormVisible } = useSelector((state) => state.user);
 
   useEffect(() => {
@@ -30,25 +35,29 @@ const ContactEmailForm = () => {
   }, []);
 
   return (
-    <Modal            
-      centered          
-      visible={contactFormVisible}                
+    <Modal
+      centered
+      visible={contactFormVisible}
       onCancel={contactModalCancelBtn}
       width={700}
-      footer={null}      
+      footer={null}
     >
       <Row align='middle'>
         <ContactFormIcon className='bolder' />
-        <ContactFormMainText className='bolder'>Contact Mirrer</ContactFormMainText>
+        <ContactFormMainText className='bolder'>
+          Contact Mirrer
+        </ContactFormMainText>
       </Row>
-      <ContactFormSubText className='bold'>Thank you for your Comments.</ContactFormSubText>      
-      
+      <ContactFormSubText className='bold'>
+        Thank you for your Comments.
+      </ContactFormSubText>
+
       <Form
         className='bold'
         form={form}
-        name="contact"
-        onFinish={onSubmitForm}      
-        layout="vertical"
+        name='contact'
+        onFinish={onSubmitForm}
+        layout='vertical'
         requiredMark={false}
         initialValues={
           me && {
@@ -57,11 +66,11 @@ const ContactEmailForm = () => {
         }
       >
         <Form.Item
-          name="name"
-          label="Author"
+          name='name'
+          label='Author'
           rules={[
             {
-              type: 'text',              
+              type: 'text',
             },
             {
               required: true,
@@ -69,15 +78,15 @@ const ContactEmailForm = () => {
             },
           ]}
         >
-          <Input placeholder='작성자' allowClear/>
+          <Input placeholder='작성자' allowClear />
         </Form.Item>
 
         <Form.Item
-          name="email"
-          label="E-MAIL"
+          name='email'
+          label='E-MAIL'
           rules={[
             {
-              type: 'email',              
+              type: 'email',
             },
             {
               required: true,
@@ -85,15 +94,15 @@ const ContactEmailForm = () => {
             },
           ]}
         >
-          <Input placeholder='이메일을 입력해주세요.' allowClear/>
+          <Input placeholder='이메일을 입력해주세요.' allowClear />
         </Form.Item>
 
         <Form.Item
-          name="title"
-          label="Title"
+          name='title'
+          label='Title'
           rules={[
             {
-              type: 'text',              
+              type: 'text',
             },
             {
               required: true,
@@ -101,15 +110,15 @@ const ContactEmailForm = () => {
             },
           ]}
         >
-          <Input placeholder='제목을 입력해주세요.' allowClear/>
+          <Input placeholder='제목을 입력해주세요.' allowClear />
         </Form.Item>
 
         <Form.Item
-          name="text"
-          label="Text"
+          name='text'
+          label='Text'
           rules={[
             {
-              type: 'text',              
+              type: 'text',
             },
             {
               required: true,
@@ -117,22 +126,26 @@ const ContactEmailForm = () => {
             },
           ]}
         >
-          <Input.TextArea 
-            placeholder='내용을 입력해주세요.' 
+          <Input.TextArea
+            placeholder='내용을 입력해주세요.'
             maxLength={400}
             showCount
-            allowClear 
+            allowClear
             rows={6}
           />
         </Form.Item>
 
         <Form.Item>
-          <Row justify="end">
-            <ContactFormBtn onClick={contactModalCancelBtn}>취소</ContactFormBtn>
-            <Button type="primary" htmlType="submit">전송</Button>
+          <Row justify='end'>
+            <ContactFormBtn onClick={contactModalCancelBtn}>
+              취소
+            </ContactFormBtn>
+            <Button type='primary' htmlType='submit'>
+              전송
+            </Button>
           </Row>
         </Form.Item>
-      </Form>      
+      </Form>
     </Modal>
   );
 };

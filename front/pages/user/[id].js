@@ -8,9 +8,18 @@ import axios from 'axios';
 import { END } from 'redux-saga';
 
 import AppLayout from '../../components/AppLayout';
-import { LOAD_MY_INFO_REQUEST, LOAD_USER_INFO_REQUEST } from '../../reducers/user';
+import {
+  LOAD_MY_INFO_REQUEST,
+  LOAD_USER_INFO_REQUEST,
+} from '../../reducers/user';
 import { LOAD_USER_POSTS_REQUEST } from '../../reducers/post';
-import { HomeWrapper, MypageText, MypageWrapper, PageMainText, PageSubText } from '../../styles/pageStyles';
+import {
+  HomeWrapper,
+  MypageText,
+  MypageWrapper,
+  PageMainText,
+  PageSubText,
+} from '../../styles/pageStyles';
 import RecentPostList from '../../components/HomePost/RecentPostList';
 import HomeFooter from '../../components/HomePost/HomeFooter';
 
@@ -19,50 +28,66 @@ const User = () => {
   const router = useRouter();
   const { id } = router.query;
   const { userInfo } = useSelector((state) => state.user);
-  const { recentPosts, hasMorePosts, loadRecentPostsLoading } = useSelector((state) => state.post);
-  
+  const { recentPosts, hasMorePosts, loadRecentPostsLoading } = useSelector(
+    (state) => state.post
+  );
+
   useEffect(() => {
     function onScroll() {
-      if (window.scrollY + document.documentElement.clientHeight > document.documentElement.scrollHeight - 300) {
+      if (
+        window.scrollY + document.documentElement.clientHeight >
+        document.documentElement.scrollHeight - 300
+      ) {
         if (hasMorePosts && !loadRecentPostsLoading) {
           dispatch({
             type: LOAD_USER_POSTS_REQUEST,
             lastId: recentPosts[recentPosts.length - 1]?.id,
             data: id,
-          });    
+          });
         }
       }
-    };    
+    }
 
     window.addEventListener('scroll', onScroll);
     return () => {
       window.removeEventListener('scroll', onScroll);
-    }
+    };
   }, [hasMorePosts, id, recentPosts.length, loadRecentPostsLoading]);
 
   return (
     <AppLayout>
       <Head>
         <title>{userInfo?.nickname}님의 작성 게시글</title>
-        <meta name='description' content={`${userInfo?.nickname}님이 작성한 게시글 검색결과`}/>
-        <meta property='og:title' content={`${userInfo?.nickname}님의 작성 게시글`} />
-        <meta property='og:description' content={`${userInfo?.nickname}님이 작성한 게시글 검색결과`} />                
-        <meta property="og:image" content={'https://recipeio.ga/favicon.ico'} />
-        <meta property='og:url' content={`http://recipeio.ga/user/${id}`} />
+        <meta
+          name='description'
+          content={`${userInfo?.nickname}님이 작성한 게시글 검색결과`}
+        />
+        <meta
+          property='og:title'
+          content={`${userInfo?.nickname}님의 작성 게시글`}
+        />
+        <meta
+          property='og:description'
+          content={`${userInfo?.nickname}님이 작성한 게시글 검색결과`}
+        />
+        <meta
+          property='og:image'
+          content={'https://recipeio.site/favicon.ico'}
+        />
+        <meta property='og:url' content={`http://recipeio.site/user/${id}`} />
       </Head>
 
       <MypageWrapper>
         <MypageText>
           <PageMainText className='bold'>{`${userInfo?.nickname}님의 Posting Page`}</PageMainText>
           <PageSubText>
-            {recentPosts.length 
-            ? `총 ${recentPosts.length}건의 게시글이 등록되었습니다.`
-            : `등록된 게시글이 존재하지 않습니다.`
-            }          
+            {recentPosts.length
+              ? `총 ${recentPosts.length}건의 게시글이 등록되었습니다.`
+              : `등록된 게시글이 존재하지 않습니다.`}
           </PageSubText>
         </MypageText>
       </MypageWrapper>
-      
+
       <HomeWrapper>
         <RecentPostList recentPosts={recentPosts} />
       </HomeWrapper>
@@ -71,27 +96,29 @@ const User = () => {
   );
 };
 
-export const getServerSideProps = wrapper.getServerSideProps(async (context) => {
-  const cookie = context.req ? context.req.headers.cookie : '';
-  axios.defaults.headers.Cookie = '';
-  if (context.req && cookie) {
-    axios.defaults.headers.Cookie = cookie;
-  }
+export const getServerSideProps = wrapper.getServerSideProps(
+  async (context) => {
+    const cookie = context.req ? context.req.headers.cookie : '';
+    axios.defaults.headers.Cookie = '';
+    if (context.req && cookie) {
+      axios.defaults.headers.Cookie = cookie;
+    }
 
-  context.store.dispatch({
-    type: LOAD_MY_INFO_REQUEST,
-  });  
-  context.store.dispatch({
-    type: LOAD_USER_INFO_REQUEST,
-    data: context.params.id,
-  });  
-  context.store.dispatch({
-    type: LOAD_USER_POSTS_REQUEST,
-    data: context.params.id,
-  });
-  
-  context.store.dispatch(END);
-  await context.store.sagaTask.toPromise();
-});
+    context.store.dispatch({
+      type: LOAD_MY_INFO_REQUEST,
+    });
+    context.store.dispatch({
+      type: LOAD_USER_INFO_REQUEST,
+      data: context.params.id,
+    });
+    context.store.dispatch({
+      type: LOAD_USER_POSTS_REQUEST,
+      data: context.params.id,
+    });
+
+    context.store.dispatch(END);
+    await context.store.sagaTask.toPromise();
+  }
+);
 
 export default User;

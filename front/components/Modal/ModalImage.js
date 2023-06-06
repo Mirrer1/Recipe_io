@@ -27,20 +27,24 @@ const ModalImage = ({ PostImages }) => {
             visible,
             onVisibleChange: (vis) => setVisible(vis),
           }}
-        > 
+        >
           {PostImages.map((v) => {
-            return (                            
-              <Image key={v.id} src={`${v?.src.replace(/\/thumb\//, '/original/')}`} alt={v?.src} />        
-            )
+            return (
+              <Image
+                key={v.id}
+                src={`${v?.src.replace(/\/thumb\//, '/original/')}`}
+                alt={v?.src}
+              />
+            );
           })}
         </Image.PreviewGroup>
       </ModalImageWrapper>
     </>
-  )
+  );
 };
 
 ModalImage.propTypes = {
   PostImages: PropTypes.arrayOf(PropTypes.object),
-}
+};
 
 export default ModalImage;

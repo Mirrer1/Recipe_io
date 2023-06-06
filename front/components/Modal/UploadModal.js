@@ -7,14 +7,14 @@ import { BtnWrapper, ModalMainText, ModalSubText } from '../../styles/homePost';
 
 const UploadModal = () => {
   const { uploadImagesLoading } = useSelector((state) => state.post);
-  
+
   return (
     <>
       <Modal
         centered
         visible={uploadImagesLoading}
         footer={false}
-        closable={false}        
+        closable={false}
       >
         <BtnWrapper>
           <UploadModalIcon />
@@ -23,7 +23,7 @@ const UploadModal = () => {
         <ModalSubText>잠시만 기다려 주세요.</ModalSubText>
       </Modal>
     </>
-  )
-}
+  );
+};
 
 export default UploadModal;

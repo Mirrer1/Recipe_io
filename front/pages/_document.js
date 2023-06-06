@@ -8,9 +8,11 @@ export default class MyDocument extends Document {
     const originalRenderPage = ctx.renderPage;
 
     try {
-      ctx.renderPage = () => originalRenderPage({				
-        enhanceApp: (App) => (props) => sheet.collectStyles(<App {...props} />),
-      })
+      ctx.renderPage = () =>
+        originalRenderPage({
+          enhanceApp: (App) => (props) =>
+            sheet.collectStyles(<App {...props} />),
+        });
       const initialProps = await Document.getInitialProps(ctx);
       return {
         ...initialProps,
@@ -22,7 +24,7 @@ export default class MyDocument extends Document {
         ),
       };
     } catch (error) {
-      console.error(error)
+      console.error(error);
     } finally {
       sheet.seal();
     }
@@ -33,14 +35,14 @@ export default class MyDocument extends Document {
       <Html>
         <Head>
           <link
-            href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css"
-            rel="stylesheet"
-            type="text/css"
+            href='https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css'
+            rel='stylesheet'
+            type='text/css'
           />
         </Head>
 
         <body>
-          <script src="https://polyfill.io/v3/polyfill.min.js?features=default%2Ces2015%2Ces2016%2Ces2017%2Ces2018%2Ces2019"/>							
+          <script src='https://polyfill.io/v3/polyfill.min.js?features=default%2Ces2015%2Ces2016%2Ces2017%2Ces2018%2Ces2019' />
           <Main />
           <NextScript />
         </body>

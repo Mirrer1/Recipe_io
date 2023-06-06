@@ -1,5 +1,13 @@
 import { Form, List, Card, Col, Button } from 'antd';
-import { EditOutlined, LikeOutlined, FormOutlined, MoreOutlined, HeartOutlined, HeartTwoTone, CommentOutlined } from '@ant-design/icons';
+import {
+  EditOutlined,
+  LikeOutlined,
+  FormOutlined,
+  MoreOutlined,
+  HeartOutlined,
+  HeartTwoTone,
+  CommentOutlined,
+} from '@ant-design/icons';
 import styled, { createGlobalStyle } from 'styled-components';
 
 // MyPage Global Style
@@ -17,21 +25,21 @@ export const MyPageText = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: start;
-    align-items: center;      
+    align-items: center;
   }
-`
+`;
 
 export const MyPageMainText = styled.h2`
   && {
-    font-size: 1rem;    
-    margin: 0;    
+    font-size: 1rem;
+    margin: 0;
   }
 `;
 
 export const MyPageSubText = styled.p`
   && {
-    font-size: 0.7rem;    
-    margin: 0;      
+    font-size: 0.7rem;
+    margin: 0;
   }
 `;
 
@@ -44,61 +52,61 @@ export const MyPageImage = styled.img`
     bottom: -9999px;
     left: -9999px;
     right: -9999px;
-    margin: auto;    
+    margin: auto;
   }
 `;
 
 // NicknameEditForm Style
 export const FormWrapper = styled.div`
   && {
-    padding: 1em 0;      
+    padding: 1em 0;
   }
-`
+`;
 
 export const FormHeader = styled.div`
   && {
-    display: flex;  
+    display: flex;
     justify-content: start;
     align-items: center;
-    padding: 0.5em;      
+    padding: 0.5em;
   }
-`
+`;
 
 export const FormIcon = styled(EditOutlined)`
   && {
     font-size: 2rem;
-    margin-right: 0.2em;          
+    margin-right: 0.2em;
   }
-`
+`;
 
 export const FormInput = styled(Form)`
   && {
-    padding: 1.2em;        
+    padding: 1.2em;
   }
 `;
 
 // MyScrap Style
 export const ScrapWrapper = styled.div`
   && {
-    display: flex;  
+    display: flex;
     justify-content: start;
     align-items: center;
     padding: 0.5em;
-    margin-bottom: 0.5em;            
+    margin-bottom: 0.5em;
   }
-`
+`;
 
 export const ScrapIcon = styled(LikeOutlined)`
   && {
     font-size: 2rem;
-    margin-right: 0.2em;            
+    margin-right: 0.2em;
   }
-`
+`;
 
 // ScrapList Style
 export const ListWrapper = styled(List)`
   && {
-    padding: 2em 0 1em 0;          
+    padding: 2em 0 1em 0;
   }
 `;
 
@@ -110,20 +118,20 @@ export const BtnWrapper = styled.div`
 `;
 
 // ScrapCard Style
-export const ScrapCardBody = {  
-  height: '145px', 
+export const ScrapCardBody = {
+  height: '145px',
   overflow: 'hidden',
 };
 
 export const ScrapCardWrapper = styled(Card)`
   && {
-    width: 200px;        
+    width: 200px;
   }
 `;
 
 export const ScrapImage = styled.section`
   && {
-    position: relative;    
+    position: relative;
     height: 130px;
     overflow: hidden;
   }
@@ -132,36 +140,36 @@ export const ScrapImage = styled.section`
 // MyBoard Style
 export const BoardHeader = styled.div`
   && {
-    display: flex;  
+    display: flex;
     justify-content: start;
     align-items: center;
     padding: 0.5em;
-    margin: 2em 0 0.5em 0;        
+    margin: 2em 0 0.5em 0;
   }
-`
+`;
 
 export const BoardIcon = styled(FormOutlined)`
   && {
     font-size: 2rem;
-    margin-right: 0.2em;            
+    margin-right: 0.2em;
   }
-`
+`;
 
 // BoardCard style
-export const BoardCardHeader = {  
-  border: 'none', 
-  paddingRight: '2em',  
+export const BoardCardHeader = {
+  border: 'none',
+  paddingRight: '2em',
 };
 
-export const BoardCardBody = {  
+export const BoardCardBody = {
   paddingTop: '0',
 };
 
 export const MoreIcon = styled(MoreOutlined)`
   && {
-    font-size: 1.25rem;        
+    font-size: 1.25rem;
   }
-`
+`;
 
 export const ColWrapper = styled(Col)`
   && {
@@ -179,7 +187,7 @@ export const CardTextWrapper = styled.div`
 
 export const CardText = styled(Card.Meta)`
   && {
-    margin-bottom: 2em;   
+    margin-bottom: 2em;
   }
 `;
 
@@ -200,35 +208,35 @@ export const CardContent = styled.p`
 
 export const HeaderBtn = styled(Button)`
   && {
-    font-size: 1rem; 
+    font-size: 1rem;
     padding: 0 0.5em;
     &:hover {
       background-color: white;
-    }        
+    }
   }
 `;
 
 export const HeartBtnIcon = styled(HeartOutlined)`
   && {
-    margin-right: 0.5em;        
+    margin-right: 0.5em;
   }
 `;
 
 export const TwoToneHeartBtnIcon = styled(HeartTwoTone)`
   && {
-    margin-right: 0.5em;        
+    margin-right: 0.5em;
   }
 `;
 
 export const CommentBtnIcon = styled(CommentOutlined)`
   && {
-    margin-right: 0.5em;        
+    margin-right: 0.5em;
   }
 `;
 
 export const CardImageWrapper = styled.div`
   && {
-    position: relative;    
+    position: relative;
     height: 260px;
     overflow: hidden;
   }
@@ -243,6 +251,6 @@ export const ImageWrapper = styled.img`
     bottom: -9999px;
     left: -9999px;
     right: -9999px;
-    margin: auto;    
+    margin: auto;
   }
 `;

@@ -1,9 +1,15 @@
 import React from 'react';
 
 import ScrapList from './ScrapList';
-import { ScrapWrapper, ScrapIcon, MyPageText, MyPageMainText, MyPageSubText } from '../../styles/myPage';
+import {
+  ScrapWrapper,
+  ScrapIcon,
+  MyPageText,
+  MyPageMainText,
+  MyPageSubText,
+} from '../../styles/myPage';
 
-const MyScrap = () => {  
+const MyScrap = () => {
   return (
     <section>
       <ScrapWrapper>
@@ -13,10 +19,10 @@ const MyScrap = () => {
           <MyPageSubText>좋아요한 글</MyPageSubText>
         </MyPageText>
       </ScrapWrapper>
-        
+
       <ScrapList />
     </section>
-  )
+  );
 };
 
 export default MyScrap;

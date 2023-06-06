@@ -1,8 +1,13 @@
 import React from 'react';
 
 import BoardList from './BoardList';
-import { BoardHeader, BoardIcon, MyPageText, MyPageMainText, MyPageSubText } from '../../styles/myPage';
-
+import {
+  BoardHeader,
+  BoardIcon,
+  MyPageText,
+  MyPageMainText,
+  MyPageSubText,
+} from '../../styles/myPage';
 
 const MyBoard = () => {
   return (
@@ -14,10 +19,10 @@ const MyBoard = () => {
           <MyPageSubText>게시물 관리</MyPageSubText>
         </MyPageText>
       </BoardHeader>
-            
-      <BoardList />          
+
+      <BoardList />
     </section>
-  )
+  );
 };
 
 export default MyBoard;

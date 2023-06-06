@@ -10,7 +10,7 @@ const App = ({ Component }) => {
   return (
     <>
       <Head>
-        <meta charSet="utf-8" />
+        <meta charSet='utf-8' />
         <title>Recipe.io</title>
       </Head>
       <Component />
@@ -20,6 +20,6 @@ const App = ({ Component }) => {
 
 App.propTypes = {
   Component: PropTypes.elementType.isRequired,
-}
+};
 
 export default wrapper.withRedux(App);

@@ -11,19 +11,22 @@ const { isLoggedIn, isNotLoggedIn } = require('./middlewares');
 
 const router = express.Router();
 
-router.get('/', async (req, res, next) => { // loadMyInfoAPI / GET /user
-  try {    
+router.get('/', async (req, res, next) => {
+  // loadMyInfoAPI / GET /user
+  try {
     if (req.user) {
       const fullUserWithoutPassword = await User.findOne({
-        where: { id: req.user.id },        
+        where: { id: req.user.id },
         order: [[Post, 'createdAt', 'DESC']],
-        attributes: { 
-          exclude: ['password'] 
-        },     
-        include: [{
-          model: Post,
-          attributes: ['id', 'title', 'createdAt'],
-        }], 
+        attributes: {
+          exclude: ['password'],
+        },
+        include: [
+          {
+            model: Post,
+            attributes: ['id', 'title', 'createdAt'],
+          },
+        ],
       });
       res.status(200).json(fullUserWithoutPassword);
     } else {
@@ -35,22 +38,26 @@ router.get('/', async (req, res, next) => { // loadMyInfoAPI / GET /user
   }
 });
 
-router.get('/alert', async (req, res, next) => { // loadMyAlertAPI / GET /user/alert
-  try {        
+router.get('/alert', async (req, res, next) => {
+  // loadMyAlertAPI / GET /user/alert
+  try {
     const alert = await Alert.findAll({
       where: { AlertedId: req.user.id },
       attributes: ['id', 'type'],
       order: [['createdAt', 'DESC']],
-      include: [{
-        model: Post,
-        attributes: ['id', 'title'],
-      }, {
-        model: User,
-        attributes: ['id', 'nickname'],
-        as: 'Alerter',
-      }]
-    });    
-    
+      include: [
+        {
+          model: Post,
+          attributes: ['id', 'title'],
+        },
+        {
+          model: User,
+          attributes: ['id', 'nickname'],
+          as: 'Alerter',
+        },
+      ],
+    });
+
     const divideAlert = alert.slice(0, parseInt(req.query.alertLimit, 10));
     res.status(200).json(divideAlert);
   } catch (error) {
@@ -59,7 +66,8 @@ router.get('/alert', async (req, res, next) => { // loadMyAlertAPI / GET /user/a
   }
 });
 
-router.post('/login', isNotLoggedIn, (req, res, next) => { // logInAPI / POST /user/login
+router.post('/login', isNotLoggedIn, (req, res, next) => {
+  // logInAPI / POST /user/login
   passport.authenticate('local', (err, user, info) => {
     if (err) {
       console.error(err);
@@ -74,44 +82,51 @@ router.post('/login', isNotLoggedIn, (req, res, next) => { // logInAPI / POST /u
         console.error(loginErr);
         return next(loginErr);
       }
-    
-    const fullUserWithoutPassword = await User.findOne({
-      where: { id: user.id },
-      order: [[Post, 'createdAt', 'DESC']],
-      attributes: { exclude: ['password'] },      
-      include: [{
-        model: Post,
-        attributes: ['id', 'title', 'createdAt'],
-      }], 
-    })        
-    return res.status(200).json(fullUserWithoutPassword);
+
+      const fullUserWithoutPassword = await User.findOne({
+        where: { id: user.id },
+        order: [[Post, 'createdAt', 'DESC']],
+        attributes: { exclude: ['password'] },
+        include: [
+          {
+            model: Post,
+            attributes: ['id', 'title', 'createdAt'],
+          },
+        ],
+      });
+      return res.status(200).json(fullUserWithoutPassword);
     });
   })(req, res, next);
-}); 
+});
 
-router.post('/auth', async (req, res, next) => { // sendAuthMailAPI / POST / user/auth  
-  try {    
+router.post('/auth', async (req, res, next) => {
+  // sendAuthMailAPI / POST / user/auth
+  try {
     const user = await User.findOne({
-      where: { email: req.body.email }
+      where: { email: req.body.email },
     });
     if (user) {
       return res.status(403).send('이미 존재하는 회원입니다.');
     }
 
-    const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz';
+    const chars =
+      '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz';
     const stringLength = 6;
     let authCode = '';
     for (let i = 0; i < stringLength; i++) {
-      const rnum = Math.floor(Math.random() * chars.length)
-      authCode += chars.substring(rnum, rnum + 1)
-    };
+      const rnum = Math.floor(Math.random() * chars.length);
+      authCode += chars.substring(rnum, rnum + 1);
+    }
 
     const transporter = nodeMailer.createTransport({
       service: 'gmail',
       host: 'smtp.gmail.com',
       port: 587,
       secure: false,
-      auth: { user: process.env.AUTH_MAIL, pass: process.env.AUTH_MAIL_PASSWORD },
+      auth: {
+        user: process.env.AUTH_MAIL,
+        pass: process.env.AUTH_MAIL_PASSWORD,
+      },
     });
     const mailOptions = {
       from: process.env.AUTH_MAIL,
@@ -137,17 +152,18 @@ router.post('/auth', async (req, res, next) => { // sendAuthMailAPI / POST / use
         next(error);
       }
       res.status(200).send(authCode);
-    });    
+    });
   } catch (error) {
     console.log(error);
     next(error);
   }
 });
 
-router.post('/', isNotLoggedIn, async(req, res, next) => { // signUpAPI / POST /user
+router.post('/', isNotLoggedIn, async (req, res, next) => {
+  // signUpAPI / POST /user
   try {
     const exUser = await User.findOne({
-      where: { email: req.body.email }
+      where: { email: req.body.email },
     });
     if (exUser) {
       return res.status(403).send('이미 사용중인 아이디입니다.');
@@ -166,45 +182,59 @@ router.post('/', isNotLoggedIn, async(req, res, next) => { // signUpAPI / POST /
   }
 });
 
-router.post('/logout', isLoggedIn, (req, res) => { // logOutAPI / POST / user/logout  
+router.post('/logout', isLoggedIn, (req, res) => {
+  // logOutAPI / POST / user/logout
   req.logout(() => {
     res.send('ok');
-  });  
+  });
 });
 
-router.get('/liked', isLoggedIn, async (req, res, next) => { // loadLikedPostAPI / GET /user/liked
+router.get('/liked', isLoggedIn, async (req, res, next) => {
+  // loadLikedPostAPI / GET /user/liked
   try {
-    const likedPosts = await User.findAll({   
-      where: { id: req.user.id },      
+    const likedPosts = await User.findAll({
+      where: { id: req.user.id },
       attributes: [],
       order: [
-        [Sequelize.literal("(`Liked->Like`.`createdAt`)"), "DESC"],        
-        [{ model: Post, as:'Liked' }, Comment, 'createdAt', 'DESC']
-      ],      
-      include: [{
-        model: Post,
-        as: 'Liked',        
-        include: [{
-          model: User,
-          attributes: ['id', 'nickname'],
-        }, {
-          model: User,
-          as: 'Likers',
-          attributes: ['id'],
-        }, {
-          model: Comment,          
-          include: [{
-            model: User,
-            attributes: ['id', 'nickname'],
-          }],
-        }, {
-          model: Image,
-        }]
-      }],
-    });    
+        [Sequelize.literal('(`Liked->Like`.`createdAt`)'), 'DESC'],
+        [{ model: Post, as: 'Liked' }, Comment, 'createdAt', 'DESC'],
+      ],
+      include: [
+        {
+          model: Post,
+          as: 'Liked',
+          include: [
+            {
+              model: User,
+              attributes: ['id', 'nickname'],
+            },
+            {
+              model: User,
+              as: 'Likers',
+              attributes: ['id'],
+            },
+            {
+              model: Comment,
+              include: [
+                {
+                  model: User,
+                  attributes: ['id', 'nickname'],
+                },
+              ],
+            },
+            {
+              model: Image,
+            },
+          ],
+        },
+      ],
+    });
     const likedPostsWithoutUserInfo = likedPosts[0].Liked;
-    const divideLikedPosts = likedPostsWithoutUserInfo.slice(0, parseInt(req.query.likedLimit, 10));
-    
+    const divideLikedPosts = likedPostsWithoutUserInfo.slice(
+      0,
+      parseInt(req.query.likedLimit, 10)
+    );
+
     res.status(200).json(divideLikedPosts);
   } catch (error) {
     console.error(error);
@@ -212,30 +242,38 @@ router.get('/liked', isLoggedIn, async (req, res, next) => { // loadLikedPostAPI
   }
 });
 
-router.get('/board', isLoggedIn, async (req, res, next) => { // loadBoardPostAPI / GET /user/board
+router.get('/board', isLoggedIn, async (req, res, next) => {
+  // loadBoardPostAPI / GET /user/board
   try {
     const boardPost = await Post.findAll({
       where: { UserId: req.user.id },
       order: [
-        [ 'createdAt', 'DESC' ],
+        ['createdAt', 'DESC'],
         [Comment, 'createdAt', 'DESC'],
-      ],      
-      include: [{
-        model: User,
-        attributes: ['id', 'nickname'],
-      }, {
-        model: User,
-        as: 'Likers',
-        attributes: ['id'],
-      }, {
-        model: Comment,
-        include: [{
+      ],
+      include: [
+        {
           model: User,
           attributes: ['id', 'nickname'],
-        }],
-      }, {
-        model: Image,
-      }]
+        },
+        {
+          model: User,
+          as: 'Likers',
+          attributes: ['id'],
+        },
+        {
+          model: Comment,
+          include: [
+            {
+              model: User,
+              attributes: ['id', 'nickname'],
+            },
+          ],
+        },
+        {
+          model: Image,
+        },
+      ],
     });
     res.status(200).json(boardPost);
   } catch (error) {
@@ -244,19 +282,25 @@ router.get('/board', isLoggedIn, async (req, res, next) => { // loadBoardPostAPI
   }
 });
 
-router.patch('/nickname', isLoggedIn, async (req, res, next) => { // nicknameEditAPI / PATCH / user/nickname
+router.patch('/nickname', isLoggedIn, async (req, res, next) => {
+  // nicknameEditAPI / PATCH / user/nickname
   try {
     const user = await User.findOne({
       where: { nickname: req.body.nickname },
-    })
+    });
     if (user) {
-      return res.status(404).json(`"${req.body.nickname}"은 이미 존재하는 닉네임입니다.`);
+      return res
+        .status(404)
+        .json(`"${req.body.nickname}"은 이미 존재하는 닉네임입니다.`);
     }
-    await User.update({
-      nickname: req.body.nickname,
-    }, {
-      where: { id: req.user.id },
-    })
+    await User.update(
+      {
+        nickname: req.body.nickname,
+      },
+      {
+        where: { id: req.user.id },
+      }
+    );
     res.status(200).json({ nickname: req.body.nickname });
   } catch (error) {
     console.error(error);
@@ -264,10 +308,11 @@ router.patch('/nickname', isLoggedIn, async (req, res, next) => { // nicknameEdi
   }
 });
 
-router.delete('/:alertId/alert', async (req, res, next) => { // checkedAlertAPI / DELETE /user/1(알람 ID)/alert
-  try {    
+router.delete('/:alertId/alert', async (req, res, next) => {
+  // checkedAlertAPI / DELETE /user/1(알람 ID)/alert
+  try {
     await Alert.destroy({
-      where: { id: req.params.alertId },      
+      where: { id: req.params.alertId },
     });
     res.status(200).json({ id: req.params.alertId });
   } catch (error) {
@@ -276,7 +321,8 @@ router.delete('/:alertId/alert', async (req, res, next) => { // checkedAlertAPI 
   }
 });
 
-router.get('/:userId', async (req, res, next) => { // loadUserInfoAPI / GET / user/1(유저 ID)
+router.get('/:userId', async (req, res, next) => {
+  // loadUserInfoAPI / GET / user/1(유저 ID)
   try {
     const user = await User.findOne({
       where: { id: req.params.userId },
@@ -288,36 +334,44 @@ router.get('/:userId', async (req, res, next) => { // loadUserInfoAPI / GET / us
     res.status(200).json(user);
   } catch (error) {
     console.error(error);
-    next(error);    
+    next(error);
   }
 });
 
-router.get('/:userId/posts', async (req, res, next) => { // loadUserPostsAPI / GET /user/1(유저 ID)/posts
+router.get('/:userId/posts', async (req, res, next) => {
+  // loadUserPostsAPI / GET /user/1(유저 ID)/posts
   try {
     const where = { UserId: req.params.userId };
     if (parseInt(req.query.lastId, 10)) {
-      where.id = { [Op.lt]: parseInt(req.query.lastId, 10)}
+      where.id = { [Op.lt]: parseInt(req.query.lastId, 10) };
     }
     const posts = await Post.findAll({
       where,
-      limit: 10,      
-      order: [['createdAt', 'DESC']],      
-      include: [{
-        model: User,
-        attributes: ['id', 'nickname'],
-      }, {
-        model: User,
-        as: 'Likers',
-        attributes: ['id'],
-      }, {
-        model: Comment,
-        include: [{
+      limit: 10,
+      order: [['createdAt', 'DESC']],
+      include: [
+        {
           model: User,
           attributes: ['id', 'nickname'],
-        }],
-      }, {
-        model: Image,
-      }]
+        },
+        {
+          model: User,
+          as: 'Likers',
+          attributes: ['id'],
+        },
+        {
+          model: Comment,
+          include: [
+            {
+              model: User,
+              attributes: ['id', 'nickname'],
+            },
+          ],
+        },
+        {
+          model: Image,
+        },
+      ],
     });
     res.status(200).json(posts);
   } catch (error) {
